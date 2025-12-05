@@ -7,9 +7,14 @@ import re
 # ==========================================================
 try:
     import nltk
+    nltk.download('punkt')
+    nltk.download('averaged_perceptron_tagger')
     from nltk.tokenize import sent_tokenize, word_tokenize
     from nltk.corpus import stopwords
     from nltk.stem import WordNetLemmatizer
+    import streamlit as st
+
+
 except ModuleNotFoundError:
     st.error("❌ Le package NLTK n'est pas installé. Ajoutez-le dans requirements.txt et redeployez.")
     st.stop()
