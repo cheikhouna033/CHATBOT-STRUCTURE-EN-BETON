@@ -2,49 +2,58 @@ import streamlit as st
 import os
 import re
 
-# ----------------------------
-# Détection et correction du texte inversé
-# ----------------------------
+# ============================================
+# ✔ Corrections texte inversé
+# ============================================
 def is_reversed(text):
-    words_list = text.split()
-    reversed_count = sum(1 for w in words_list if w[::-1].lower() in text.lower())
-    return reversed_count > len(words_list) * 0.5
+    words = text.split()
+    reversed_count = sum(1 for w in words if w[::-1].lower() in text.lower())
+    return reversed_count > len(words) * 0.5
 
 def fix_reversed_text(text):
     return text[::-1]
 
-# ----------------------------
-# Extraction PDF → TXT
-# ----------------------------
+
+# ============================================
+# ✔ Extraction PDF → TXT
+# ============================================
 def extract_pdf_to_txt(pdf_path, txt_path):
+
     if os.path.exists(txt_path):
         return
 
     full_text = ""
-    pdfplumber = None
+    pdfplumber_available = False
     pypdf2_available = False
 
-    # Import PDF parsers uniquement ici
+    # Tentative import pdfplumber
     try:
         import pdfplumber
-    except ModuleNotFoundError:
-        st.warning("pdfplumber non installé. Tentative d'utiliser PyPDF2.")
-        try:
-            from PyPDF2 import PdfReader
-            pypdf2_available = True
-        except ModuleNotFoundError:
-            st.error(
-                "Aucun parseur PDF installé. Installez 'pdfplumber' ou 'PyPDF2' dans requirements.txt."
-            )
-            return  # On sort sans planter l'app
+        pdfplumber_available = True
+    except:
+        pass
 
-    if pdfplumber is not None:
+    # Tentative import PyPDF2
+    try:
+        from PyPDF2 import PdfReader
+        pypdf2_available = True
+    except:
+        pass
+
+    if not pdfplumber_available and not pypdf2_available:
+        st.error("Aucun parseur PDF disponible. Installez pdfplumber ou PyPDF2.")
+        return
+
+    # --- Extraction principale ---
+    if pdfplumber_available:
+        import pdfplumber
         with pdfplumber.open(pdf_path) as pdf:
             for page in pdf.pages:
                 text = page.extract_text()
                 if not text:
                     continue
                 text = text.encode("utf-8", "ignore").decode("utf-8", "ignore")
+
                 lines = []
                 for line in text.split("\n"):
                     line = line.strip()
@@ -53,6 +62,7 @@ def extract_pdf_to_txt(pdf_path, txt_path):
                     if is_reversed(line):
                         line = fix_reversed_text(line)
                     lines.append(line)
+
                 full_text += "\n".join(lines) + "\n"
 
     elif pypdf2_available:
@@ -61,12 +71,14 @@ def extract_pdf_to_txt(pdf_path, txt_path):
         for page in reader.pages:
             try:
                 text = page.extract_text()
-            except Exception:
+            except:
                 text = None
             if not text:
                 continue
+
             text = text.encode("utf-8", "ignore").decode("utf-8", "ignore")
             lines = []
+
             for line in text.split("\n"):
                 line = line.strip()
                 if len(line) < 3:
@@ -74,157 +86,112 @@ def extract_pdf_to_txt(pdf_path, txt_path):
                 if is_reversed(line):
                     line = fix_reversed_text(line)
                 lines.append(line)
+
             full_text += "\n".join(lines) + "\n"
 
-    else:
-        st.error("Aucun parseur PDF disponible. Impossible d’extraire le texte.")
-        return
-
+    # Écriture du fichier texte
     with open(txt_path, "w", encoding="utf-8", errors="ignore") as f:
         f.write(full_text)
 
-    print("Extraction PDF → TXT créée.")
 
-# ----------------------------
-# NLTK et prétraitement
-# ----------------------------
-try:
-    import nltk
-    for corpus in ["stopwords", "words"]:
-        try:
-            nltk.data.find(f"corpora/{corpus}")
-        except LookupError:
-            nltk.download(corpus, quiet=True)
-    from nltk.corpus import stopwords
-except ModuleNotFoundError:
-    st.error(
-        "Le package 'nltk' n'est pas installé. Ajoutez-le dans requirements.txt et redeployez."
-    )
-    raise
+# ============================================
+# ✔ Import NLTK + prétraitement
+# ============================================
+import nltk
 
-# ----------------------------
-# scikit-learn
-# ----------------------------
-try:
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn.metrics.pairwise import cosine_similarity
-except ModuleNotFoundError:
-    st.error(
-        "Le package 'scikit-learn' n'est pas installé. Ajoutez-le dans requirements.txt et redeployez."
-    )
-    raise
+for pkg in ["punkt", "stopwords", "wordnet"]:
+    try:
+        nltk.data.find(f"corpora/{pkg}")
+    except LookupError:
+        nltk.download(pkg, quiet=True)
 
-# ----------------------------
-# Prétraitement du texte
-# ----------------------------
-def split_sentences(text):
-    return [s.strip() for s in re.split(r'(?<=[\.\?\!])\s+', text) if len(s.strip()) > 3]
+from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
 
-french_dict = set([
-    "la","le","les","des","du","de","et","entre","dans","utilisation","langue","logiciel",
-    "document","production","possible","anglais","allemand","note","calcul","tracé","graphiques",
-    "poutre","poteau","dalle","arche","ossature","structure","béton","armé","dimensionnement",
-    "charge","charges","modèle","modélisation"
-])
 
-def fix_word_spacing(text):
-    tokens = text.split()
-    fixed_tokens = []
+# ============================================
+# ✔ Prétraitement (style GOMYCODE amélioré)
+# ============================================
+def preprocess(sentence):
+    words = word_tokenize(sentence)
 
-    for token in tokens:
-        if len(token) > 15:
-            result = []
-            current = ""
-            for char in token:
-                current += char
-                if current.lower() in french_dict:
-                    result.append(current)
-                    current = ""
-            if current:
-                result.append(current)
-            fixed_tokens.extend(result)
-        else:
-            fixed_tokens.append(token)
+    sw = set(stopwords.words("french"))
+    punct = set(".,;:!?()[]{}'\"-–")
 
-    return " ".join(fixed_tokens)
+    words = [w.lower() for w in words if w.lower() not in sw and w not in punct]
 
-def preprocess(text):
-    text = text.lower()
-    text = re.sub(r"\s+", " ", text)
-    text = fix_word_spacing(text)
+    lemmatizer = WordNetLemmatizer()
+    words = [lemmatizer.lemmatize(w) for w in words]
 
-    raw = split_sentences(text)
-    stop_words = set(stopwords.words("french"))
-    cleaned = []
+    return words
 
-    for sent in raw:
-        sent = fix_word_spacing(sent)
-        tokens = re.findall(r'\w+', sent)
-        tokens = [w for w in tokens if w not in stop_words]
-        cleaned.append(" ".join(tokens))
 
-    return raw, cleaned
+# ============================================
+# ✔ Similarité Jaccard (GOMYCODE)
+# ============================================
+def jaccard_similarity(a, b):
+    a, b = set(a), set(b)
+    if not a and not b:
+        return 0
+    return len(a.intersection(b)) / len(a.union(b))
 
-# ----------------------------
-# Similarité TF-IDF
-# ----------------------------
-def best_sentence_index(query, cleaned):
-    vect = TfidfVectorizer()
-    tfidf = vect.fit_transform(cleaned + [query])
-    sim = cosine_similarity(tfidf[-1], tfidf[:-1])
-    return sim.argmax()
 
-def chatbot(query, raw, cleaned):
-    idx = best_sentence_index(query, cleaned)
-    return raw[idx]
+def find_best_sentence(query, sentences, corpus):
+    query_tokens = preprocess(query)
 
-# ----------------------------
-# Application Streamlit
-# ----------------------------
+    best_sim = 0
+    best_sentence = "Je n'ai trouvé aucune réponse pertinente."
+
+    for sent, tokens in zip(sentences, corpus):
+        sim = jaccard_similarity(query_tokens, tokens)
+        if sim > best_sim:
+            best_sim = sim
+            best_sentence = sent
+
+    return best_sentence
+
+
+# ============================================
+# ✔ Chatbot
+# ============================================
+def chatbot(question, sentences, corpus):
+    return find_best_sentence(question, sentences, corpus)
+
+
+# ============================================
+# ✔ Application Streamlit
+# ============================================
 def main():
     st.title("🤖 Chatbot – Formation ARCHE (Structures)")
-
-    with st.expander("ℹ️ Instructions et Utilité du Chatbot", expanded=True):
-        st.markdown("""
-### 🎯 Objectif
-Aider à comprendre et utiliser **le logiciel Arche Ossature** à partir du PDF Formation_Arche.pdf.
-
-### 🧠 Fonctionnalités
-- Recherche de phrases pertinentes
-- Explications sur modélisation, éléments béton armé, ferraillage
-- Dimensionnement et règles BAEL / Eurocode
-
-### ❓ Exemples
-- "Qu'est-ce qu'un portique ?"
-- "Comment modéliser un plancher dans Arche ?"
-- "C’est quoi une poutre continue ?"
-
-⚠️ Le chatbot ne remplace pas le logiciel ni les calculs réels.
-""")
 
     pdf_path = "Formation_Arche.pdf"
     txt_path = "formation_arche.txt"
 
+    # Extraction PDF si pas déjà fait
     extract_pdf_to_txt(pdf_path, txt_path)
 
-    # Vérification si le fichier TXT existe avant lecture
-    if os.path.exists(txt_path):
-        with open(txt_path, "r", encoding="utf-8", errors="ignore") as f:
-            text = f.read()
-        raw, cleaned = preprocess(text)
-    else:
-        st.warning("Le fichier texte n'a pas été créé car aucun parseur PDF n'est disponible.")
-        raw, cleaned = [], []
+    # Lecture fichier texte
+    if not os.path.exists(txt_path):
+        st.error("Impossible de charger le fichier texte extrait du PDF.")
+        return
+
+    with open(txt_path, "r", encoding="utf-8", errors="ignore") as f:
+        raw_text = f.read()
+
+    sentences = sent_tokenize(raw_text)
+    corpus = [preprocess(s) for s in sentences]
 
     question = st.text_input("Posez votre question sur ARCHE :")
 
-    if question:
-        if not raw:
-            st.error("Aucune donnée texte disponible pour répondre. Vérifiez le PDF ou les packages PDF.")
+    if st.button("🔎 Rechercher"):
+        if question.strip() == "":
+            st.warning("Veuillez entrer une question.")
         else:
-            answer = chatbot(question, raw, cleaned)
+            response = chatbot(question, sentences, corpus)
             st.markdown("### 📘 Réponse")
-            st.write(answer)
+            st.write(response)
+
 
 if __name__ == "__main__":
     main()
