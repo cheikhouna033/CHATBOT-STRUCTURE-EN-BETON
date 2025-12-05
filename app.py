@@ -19,7 +19,7 @@ except ModuleNotFoundError:
         pypdf2_available = True
     except ModuleNotFoundError:
         st.error(
-            "Aucun parseur PDF installé. Installez 'pdfplumber' ou 'PyPDF2' dans requirements.txt."
+            "Aucun parseur PDF installé. Installez 'pdfplumber' ou 'PyPDF2' dans requirement.txt."
         )
         raise
 
@@ -28,7 +28,7 @@ try:
     import nltk
 except ModuleNotFoundError:
     st.error(
-        "Le package 'nltk' n'est pas installé. Ajoutez-le dans requirements.txt et redeployez."
+        "Le package 'nltk' n'est pas installé. Ajoutez-le dans requirement.txt et redeployez."
     )
     raise
 
@@ -47,7 +47,7 @@ try:
     from sklearn.metrics.pairwise import cosine_similarity
 except ModuleNotFoundError:
     st.error(
-        "Le package 'scikit-learn' n'est pas installé. Ajoutez-le dans requirements.txt et redeployez."
+        "Le package 'scikit-learn' n'est pas installé. Ajoutez-le dans requirement.txt et redeployez."
     )
     raise
 
