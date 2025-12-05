@@ -1,0 +1,1679 @@
+Lotfi Jaballah
+SINUT
+ED
+SEUQINHCET
+TE
+SECNEICS
+SED
+ERUEIREPUS
+ELOCE
+Logiciel Arche
+Support de formation
+Bâtiment et Béton Armé
+Département de Génie Civil
+ESSTT–UNIVERSITÉ DE TUNIS
+Dimensionnement des Structures en
+Béton Armé. Utilisation du Logiciel
+Arche
+Lotfi Jaballah
+Département de Génie Civil
+Septembre 2009
+Table des matières
+1 Avant–propos 7
+2 La plate–forme Graitec OMD 9
+2.1 Qu’est-cequeGraitec? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.1.1 Effel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.1.2 Arche . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.1.3 Melody . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+2.2 PourqoiGraitecOMD? . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.2.1 Présentationgénérale . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.2.1.1 Outils–Modèles–Documents . . . . . . . . . . . . . . . . 13
+2.2.1.2 Paramétrage . . . . . . . . . . . . . . . . . . . . . . . . . 13
+2.3 GraitecOMDetWindows . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+2.3.1 Lancement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+2.3.2 Architecturedesrépertoires . . . . . . . . . . . . . . . . . . . . . . 15
+2.3.3 Désinstallation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+2.4 Gestiondesétudes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+2.4.1 Créationd’uneétude . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+2.4.2 L’étudeDéfaut . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+2.4.3 Suppressiond’uneétude . . . . . . . . . . . . . . . . . . . . . . . . 18
+2.4.4 Organisationdesétudes . . . . . . . . . . . . . . . . . . . . . . . . 18
+2.4.5 Éditionsetimpressions . . . . . . . . . . . . . . . . . . . . . . . . . 19
+2.5 Languesetnormes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2.5.1 Choixdeslangues . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2.5.2 Choixdesnormes . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2.6 Conseilsetastuces . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+3 Arche 23
+3.1 Gestiondesfichiers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+2
+Tabledesmatières
+3.1.1 Définition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+3.1.2 Manipulationdesfichiers . . . . . . . . . . . . . . . . . . . . . . . . 24
+3.1.3 LefichierDefault . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+4 Arche Ossature 25
+4.1 Généralités . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+4.1.1 Interfaceutilisateur . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+4.1.1.1 Descriptiondel’écran . . . . . . . . . . . . . . . . . . . . 25
+4.1.1.2 Menusdel’application . . . . . . . . . . . . . . . . . . . 26
+4.1.1.3 Palettesd’icônes . . . . . . . . . . . . . . . . . . . . . . . 27
+4.1.2 Démarchegénérale . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+4.1.3 Hypothèsesbâtiment . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+4.2 Saisiedeséléments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+4.2.1 Choixdumoded’accrochage . . . . . . . . . . . . . . . . . . . . . 33
+4.2.2 Choixdumodedesélection . . . . . . . . . . . . . . . . . . . . . . 36
+4.2.3 MenuModifier . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+4.2.3.1 Modifier/Étages . . . . . . . . . . . . . . . . . . . . . . . 38
+4.2.3.2 Modifier/Attributs . . . . . . . . . . . . . . . . . . . . . . 38
+4.2.3.3 Modifier/CAO . . . . . . . . . . . . . . . . . . . . . . . . 38
+4.2.4 Leséléments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+4.2.4.1 Leslignesd’aideetlesfilesdeconstruction . . . . . . . . 40
+4.2.4.2 Lesélémentsdeconstruction . . . . . . . . . . . . . . . . 41
+4.2.5 Gestiondel’affichage . . . . . . . . . . . . . . . . . . . . . . . . . 51
+4.2.5.1 Gestiongénéraledel’affichage . . . . . . . . . . . . . . . 52
+4.2.5.2 Gestiondel’affichageparsélection . . . . . . . . . . . . . 54
+5 Descente de charges 55
+5.1 MéthodeRéglementaire . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55
+5.1.1 Principegénéraldefonctionnement . . . . . . . . . . . . . . . . . . 56
+5.1.2 Caractéristiquesdesmatériaux . . . . . . . . . . . . . . . . . . . . . 58
+5.1.3 Chargementsprisencompte . . . . . . . . . . . . . . . . . . . . . . 58
+5.1.3.1 Naturesdeschargements . . . . . . . . . . . . . . . . . . 58
+5.1.3.2 Poidspropre . . . . . . . . . . . . . . . . . . . . . . . . . 59
+5.1.3.3 Chargementscréésparl’utilisateur . . . . . . . . . . . . . 59
+5.1.4 Prédimensionnement . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+5.1.4.1 PrédimensionnementparAbaques . . . . . . . . . . . . . 60
+3
+Tabledesmatières
+5.1.4.2 Prédimensionnementprécisparcalcul . . . . . . . . . . . 62
+5.1.4.3 Dégressionverticaledeschargements . . . . . . . . . . . . 62
+5.1.4.4 Travéeschargées–déchargées . . . . . . . . . . . . . . . . 63
+5.2 Calculauxélémentsfinis . . . . . . . . . . . . . . . . . . . . . . . . . . . . 66
+5.2.1 Principedefonctionnement . . . . . . . . . . . . . . . . . . . . . . 66
+5.2.2 Chargementsprisencompte . . . . . . . . . . . . . . . . . . . . . . 70
+5.2.2.1 Ladescentedechargesverticale . . . . . . . . . . . . . . 70
+5.2.2.2 Leseffortsclimatiques . . . . . . . . . . . . . . . . . . . . 70
+5.2.2.3 Leseffortssismiques . . . . . . . . . . . . . . . . . . . . 71
+5.2.3 Caractéristiquesdesélémentsdestructure . . . . . . . . . . . . . . . 72
+5.2.3.1 Poutres . . . . . . . . . . . . . . . . . . . . . . . . . . . . 72
+5.2.3.2 Poteaux . . . . . . . . . . . . . . . . . . . . . . . . . . . 73
+5.3 Exemple . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 76
+4
+Table des figures
+2.1 GraitecOMD:Écranprincipal. . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.2 ArborescenceGraitecOMDsurledisquedur. . . . . . . . . . . . . . . . . . 15
+2.3 MenuDossier. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+2.4 MenuConfigurationdel’environnement. . . . . . . . . . . . . . . . . . . . . 18
+2.5 Purged’undossier. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+2.6 Choixdeslangues. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+4.1 Descriptiondel’écranprincipal. . . . . . . . . . . . . . . . . . . . . . . . . 25
+4.2 Indicateurdel’étatd’étude. . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+4.3 Caractéristiquesgénéralesd’unbâtiment. . . . . . . . . . . . . . . . . . . . 32
+4.4 Gestiondesétages. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+4.5 Modesd’accrochage. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+4.6 Modesdesélection. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+4.7 Modificationdesétages. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+4.8 Copied’éléments. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+4.9 Déplacementd’éléments. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+4.10 Relimitationd’éléments. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+4.11 Saisiededalles. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+4.12 Sensdeportée. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+4.13 Chargement. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+4.14 Saisiedepoutres. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+4.15 Saisiedepoteaux. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+4.16 Saisiedevoiles. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+4.17 Saisiedesemellesisolées. . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+4.18 Saisiedesemellesfilantes. . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+4.19 Affichagedesélémentsdestructure. . . . . . . . . . . . . . . . . . . . . . . 53
+4.20 Affichagedesautreséléments. . . . . . . . . . . . . . . . . . . . . . . . . . 54
+5.1 Choixdesméthodesdecalcul. . . . . . . . . . . . . . . . . . . . . . . . . . 55
+5
+Tabledesfigures
+5.2 Casd’unedallereposantsurappuis. . . . . . . . . . . . . . . . . . . . . . . 56
+5.3 Philosophiegénéraledeladescentedechargestraditionnelle. . . . . . . . . . 57
+5.4 Angledediffusion. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
+5.5 Choixdelaméthodedeprédimensionnement. . . . . . . . . . . . . . . . . . 60
+5.6 Priseencomptedeladégressiondeschargesverticales. . . . . . . . . . . . . 63
+5.7 Choixdesméthodesdecalcul. . . . . . . . . . . . . . . . . . . . . . . . . . 66
+5.8 Modélisationauxélémentsfinis. . . . . . . . . . . . . . . . . . . . . . . . . 67
+5.9 Définitiondeseffortsclimatiques. . . . . . . . . . . . . . . . . . . . . . . . 71
+5.10 Définitiondeseffortssismiques. . . . . . . . . . . . . . . . . . . . . . . . . 71
+6
+1 Avant–propos
+Ce document est un support d’utilisation du logiciel Arche. Il comprend principalement
+deuxparties.
+La première partie est une initiation aux concepts utilisés par Arche. Tous les programmes
+Graitecutilisentlamêmeinterfacegraphique,permettantunemanipulationhomogènedetous
+les produits. C’est le cas des modules Arche en particulier. Cette interface sera décrite en
+détails. Au delà de l’aspect, les modules Arche partagent des fonctionnalités et des notions
+communes tels la manipulation des fichiers sur le disque, la gestion des affaires. Toutes ces
+notionscommunesàtouslesmodulesserontdétaillées.
+L’interface utilisateur, et toutes les fonctionnalités du programme seront décrites dans cette
+partie.
+– Interface utilisateur : décrit tous les objets de l’interface utilisateur (écran principal, me-
+nus,palettesd’icônes,...).
+– Listedescommandes:décritlesfonctionsdetouslesmenussuivantleschémasuivant:
+– Nomdelacommande.
+– Descriptifdel’objetdelacommande.
+– Cheminsd’accès:menu,icône,raccourci.
+– Fonctionnement:décritcomplètementlesétapesdel’utilisationdelacommande.
+– Contenu de la boite de dialogue : donne le détail des paramètres nécessaires au fonc-
+tionnementdelacommande.
+Dansladeuxièmepartienousexpliquons:
+– Lefonctionnementdeladescentedechargestraditionnelle.
+– Lefonctionnementducalculauxélémentsfinis.
+– Les caractéristiques des éléments composants le modèle vis à vis des deux calculs énon-
+césci–dessus.
+Sastructureestdiviséeentroissous–partiesreprésentativesdesonobjet:
+– Descente de charges suivant la méthode traditionnelle : présente les principes de la des-
+centedechargesd’Ossatureainsiqueceuxduprédimensionnementdeséléments.
+7
+1 Avant–propos
+– Calcul de la structure aux éléments finis : présente les principes de la modélisation aux
+élémentsfinisopéréedansOssature.
+– Caractéristiques des éléments : présente les caractéristiques des éléments vis à vis des
+deuxmodélisationsetcalculs.
+8
+2 La plate–forme Graitec OMD
+2.1 Qu’est-ce que Graitec ?
+Graitec est une société française qui réalise son activité dans l’édition et la distribution de
+logicielsdecalculetdeCAOpourlessecteursduBTPetdelamécanique.Avecplusde4000
+références,Graitecestaujourd’huilasociétéfrançaiseleaderdesondomaine.
+Graitec est développeur d’applications de calcul de structures et de dessins de plans d’exé-
+cutionavecseslogiciels:
+– Effel
+– Arche
+– Melody
+Au-delà du développement, et des services associés à la distribution de logiciel, Graitec ef-
+fectue également des prestations de calcul de haut niveau, et prend en charge la réalisation de
+dossiersd’exécution.Lesdomainesdecompétencede Graitecsont:
+– Développementdelogicielsscientifiques
+– Calculdestructures
+– Calculetdessinenbétonarmé
+– Calculetdessinencharpentemétallique
+– Calculetdessinenconstructionbois
+2.1.1 Effel
+Effelestlepremierprogrammefrançaisàproposerunenvironnementcompletpourlecalcul
+destructuresdédiéauxmétiersdelaconstruction.
+– GrâceàlaCAO,créezdesélémentsfilaires(barres,poutres,poutresàinertievariable,...),
+desarcsdecercles,desélémentssurfaciques(membranes,plaques,coques,...),placezdes
+trémies, des ouvertures,... Pour les structures courantes, utilisez les assistants de généra-
+9
+2 Laplate–formeGraitecOMD
+tion automatique de type "Portiques", "Voûtes", etc... ou vos propres modèles paramé-
+trés.
+– Appliquezdeschargesquelconques(ponctuelles,linéairesetsurfaciques),ouutilisezles
+assistants de génération automatique pour le poids propre, les charges climatiques, les
+actionssismiques,lapousséedesterresoudel’eau,etc
+– Ancrez vos structures sur des appuis ponctuels, linéaires ou surfaciques de type rigide,
+élastiqueetbutée.
+Effel estdésormaisprêtàmaillerlastructure(maillageréglé,Delaunay,imposé,raffinement)
+et à mener des calculs aux éléments finis en statique, dynamique (modes propres, séisme, vi-
+brations, chocs,...), flambement généralisé et non linéaire (tirants et butées). Mais au delà de
+ces fonctionnalités de base, Effel est également capable de déceler les anomalies de descrip-
+tion,etdeproposerdessolutionstechniques.
+Àpartirdecalculdestructureréalisé,Effelvérifieetoptimiselecomportementdel’ouvrage
+conformémentauxrèglements,pourlesmétiers:
+– Bétonarmé
+– Constructionmétallique
+– Constructionbois
+2.1.2 Arche
+Depuis sa sortie commerciale en 1993, Arche s’est imposé comme le logiciel de référence
+pour la conception et le dessin des bâtiments en béton armé. À partir d’un modèle 3D de bâ-
+timent composé de dalles, poutres, poteaux, voiles et fondations, Arche analyse la stabilité
+globaledel’ouvrageetproduitautomatiquementtouslesplansdeferraillage.ArcheOssature
+est un logiciel de simulation de bâtiment qui permet de mener rapidement et en toute rigueur
+vos études de descente de charges, de contreventement et de séisme, en respectant les mé-
+thodesusuellesdelaprofession.ArcheOssaturesedistingueparsesinnovationstechniques:
+– CAO3Dintégrée,ouimportdefichierDXF
+– NormesEC2,BAEL,ACI,DIN
+– Prédimensionnement
+– Calculsdedescentedechargesetdecontreventementavecdesmodèlesmixantméthodes
+traditionnellesetmodélisationsnumériquessophistiquées
+– Générateurclimatique3D(EC1,NV65-84)
+– Analysesismiqueendynamiquemodale
+– Productionautomatiquedesnotesdecalcul,métrésetestimatifs
+– ConnexiondirecteAdvance,ArcheVision,AllplanIngénierieetEffel
+10
+2 Laplate–formeGraitecOMD
+Archemetégalementàvotredispositiondesoutilsdecalculdescaractéristiquesgéométriques
+de sections, de calcul théorique EC2 / BAEL et de production de bordereaux d’aciers. Il in-
+tègre même un module de rendu réaliste. Les modules de ferraillage de Arche sont des lo-
+giciels dédiés à la conception, l’analyse et la production automatique de plans de ferraillage
+en béton armé. Indiquez la géométrie, les charges et les hypothèses générales, et vous ob-
+tiendrez d’un simple clic les courbes de sollicitations, les contraintes dans le béton et l’acier,
+les flèches, et bien sûr ... les plans de ferraillage d’exécution! Avec Arche Ferraillage, vous
+disposez d’un logiciel haut de gamme qui optimise la conception du ferraillage en tirant le
+meilleurprofitdesusagesdelaprofession.
+– NormesEC2,BAEL,ACI,DIN,DTUFeu
+– Dispositionsconstructivesconformémentauxrèglesparasismiques(PS92,RPA88,SI413,
+P100-92)
+– Modificationinteractiveduferraillageavecalerteàl’utilisateurencasdenonrespectdes
+règlementsenvigueur
+– DAOintégréepourlaretouchedesplans
+2.1.3 Melody
+Melody est un logiciel dédié à l’étude des charpentes métalliques. Il automatise le prédi-
+mensionnement et la vérification des profilés et des attaches, et produit des notes de calcul
+"cléenmain".
+Melodyestcomposédetroismodules:
+Melody Portiques.
+– Générationrapidedeportiquesetutilisationdebibliothèquesparamétrablesparl’utilisa-
+teur
+– Chargesclimatiquesautomatiques(NV65-84)
+– Prédimensionnementetvérificationdesprofilés
+– Notesdecalcul"cléenmain"
+– ConnexiondirecteàMelodyAttaches
+Melody Attaches.
+– Calculetdessindesattaches"PieddePoteau"
+– Calculetdessindesattaches"Poteau-Poutre"et"Poutre–Poutre"
+– Fichesdefabrication
+11
+2 Laplate–formeGraitecOMD
+Melody Planchers.
+– Générationrapidedeplanchers
+– Calculdesreportsdechargessurlessolives
+– Prédimensionnementetvérificationdessolives
+– Notesdecalcul"cléenmain"
+– ConnexiondirecteMelodyAttaches
+2.2 Pourqoi Graitec OMD ?
+2.2.1 Présentation générale
+GraitecOMDestuneplate–formequipourobjectifprincipaldeproposerunaccèssimplifié,
+rapideetsurtoutuniqueàtoutelagammedesprogrammes Graitec.
+Fig. 2.1: GraitecOMD:Écranprincipal.
+Cetteplate-formesediviseentroiszonesprincipales:
+1. L’arborescence des dossiers permet de créer les répertoires et sous répertoires qui orga-
+nisentetstockentvotretravail.ArcheetEffel s’exécutentdansledossierencours.
+12
+2 Laplate–formeGraitecOMD
+2. La zone « Etude globale » (fenêtre en haut à droite) rassemble tous les programmes
+permettantd’effectuerdesanalysesglobalesdestructure.
+3. La zone « Etude locale » (fenêtre en bas à droite) rassemble tous les programmes per-
+mettant d’effectuer des analyses locales d’éléments particuliers : étude du ferraillage
+d’unepoutre,d’unassemblage,etc.
+2.2.1.1 Outils–Modèles–Documents
+Les initiales OMD signifient Outils Modèles Documents (trois modes) et sont en relation
+avec les trois icônes en haut à gauche de la plate–forme OMD. L’application Graitec OMD
+fonctionneseloncestroismodes.Lepassageentrelesdifférentsmodessefait:
+– Encliquantdirectementsurunedestroisicônesdelabarred’outils.
+– Ou en utilisant le menu « Affichage » et en choisissant l’option « Programmes », « Mo-
+dèle»ou«Document».
+Outils. C’est le mode qui vous est proposé par défaut, il permet de lancer tous les pro-
+grammesdiffusésparGraitec.
+⇒ En cliquant sur le bouton droit de la souris, un menu contextuel permet de créer un
+raccourciverslemodulesurlebureaudeWindows.
+Modèles. Ce mode permet un affichage, non plus par programme, mais par modèles créés.
+Dans ce mode, les zones « Etude locale » et « Etude globale » font apparaître la liste des
+fichiersdedonnéescorrespondantauxmodèlesétudiés.Cettelistevarieenfonctiondudossier
+encours.
+⇒Encliquantsurleboutondroitdelasouris,unmenucontextuelpermetdesupprimerou
+renommerlemodèle.
+Documents. Cemodepermetunaffichagepardocumentproduits.Danscemode,leszones
+« Etude locale » et « Etude globale » font apparaître la liste des notes de calculs et des tracés
+différéscorrespondantauxmodèlesétudiés.Cettelistevarieenfonctiondudossierencours.
+⇒En cliquant sur le bouton droit de la souris, un menu contextuel permet d’imprimer, de
+supprimerourenommerlanotedecalculouletracédifféré.
+2.2.1.2 Paramétrage
+Graitec OMD est une plate–forme à géométrie variable. Il est possible de paramétrer et de
+filtrerl’affichagedesicônesàtravers:
+13
+2 Laplate–formeGraitecOMD
+– Laboitededialogueaccessibleparlemenu: Affichage/Options...
+– La boite de dialogue accessible par le menu contextuel surgissant en effectuant un clic
+avec le bouton droit de la souris dans une des deux zones : « Etude globale » ou « Etude
+locale».
+Affichage. Les icônes peuvent être représentées sous forme de grandes icônes, de petites
+icônesousousformedeliste.Ceparamétrageestliéaumode«OMD».
+– Enmode«Outils»,l’option«Grandesicônes»aétéretenupardéfaut.
+– Enmode«Modèle»ou«Document»,l’option«Liste»aétéretenupardéfaut.
+L’imagedefondd’écran(surlaquellesesuperposel’affichagedesicônes)peutêtresupprimée.
+Danscecaslacouleurdufondd’écrancorrespondàcelledéfiniedansWindows.
+Tri des modules. Lefonctionnementdestrisvarieenfonctiondumodedanslequelonse
+trouve:
+– Enmode«Outils»:
+Ilestpossibledefiltrerl’affichagedesicônesreprésentantlesmodules:
+⇒Par programme : Vous pouvez choisir de ne voir que les modules appartenant au pro-
+grammeArche,Effel,ArcheetEffelouTous.
+⇒Par métier : Vous pouvez choisir de ne voir que les modules se rapportant aux métiers
+Béton,MétalouBois(tousprogrammesconfondus).
+– Enmode«Modèles»et«Documents»:
+Il est possible de filtrer l’affichage des icônes représentants les modèles ou les documents
+généréssurlabase:
+⇒D’unmasque(*.*signifianttous)
+⇒De leur provenance (Ex : voir tous les documents générés par Arche Ossature et Arche
+Poutre)
+Quelque soit le mode, en cochant l’option « Modules accessibles uniquement », un filtre
+supplémentaireestréalisé:ilsupprimedel’affichagetouslesmodulesquinesontpasprésents
+dans votre système de protection. Par défaut, cette option activée, vous avez néanmoins la
+possibilitédeladésactiverpourvisualiserl’ensembledesprogrammesdiffusésparGRAITEC
+(ycomprisceuxquevousn’avezpasacquis).
+14
+2 Laplate–formeGraitecOMD
+2.3 Graitec OMD et Windows
+2.3.1 Lancement
+Depuis Windows95 ou Windows NT, il est préférable de créer un raccourci de lancement
+pourlancerlaplate–formeOMD.
+Il est également possible de lancer la plate–forme à partir de l’explorateur Windows, le
+fichierexécutableestlesuivant:C:\\Graitec\v141E\Bin\Omd\exe(version14.1).
+Remarque : Sivousavezchoisilesoptionsd’installationpardéfaut,ilsuffitdecliquersur
+«Démarrer/Programme/GraitecOMD»
+2.3.2 Architecture des répertoires
+TouteslesversionssuccessivesdeGraitecOMDseplacentsouslerépertoireGraitec.
+Fig. 2.2: ArborescenceGraitecOMDsurledisquedur.
+Pourlavesion14.1,lerépertoirev141Econtient:
+– Le répertoire Bin contient l’ensemble des fichiers exécutables (*.exe et *.dll), ainsi que
+lestablesdelibellés(*.glb)
+– LerépertoireDefaultcontientl’ensembledesdossiersdéfautparlangued’utilisation(voir
+lechapitre«Créerdesdossiers»)
+– LerépertoireResourcecontienttouslesfichierscatalogues,lesfichiersd’aides,...
+– LerépertoireValidationcontientlesfichiersdudossierdevalidationdeEffel.
+15
+2 Laplate–formeGraitecOMD
+– Le répertoire WordView contient la visionneuse de Word pour la visualisation des notes
+decalcul(enversionfrançaiseetanglaise).
+Lesétudessontstockéesindépendammentdesversionssouslerépertoire ProjectdeGraitec.
+2.3.3 Désinstallation
+Pour désinstaller « proprement » une version, il suffit de cliquer sur « Démarrer / Para-
+mètres / Panneau de configuration », de double cliquer sur l’icône « Ajout / Suppression de
+programmes », de sélectionner dans la liste proposée la version à désinstaller, puis enfin de
+cliquer sur le bouton Ajouter / Supprimer. Prenons l’exemple de la désinstallation d’une ver-
+sion 14.1, Après désinstallation, il se peut que le répertoire 14.1 ainsi que quelques sous ré-
+pertoires subsistent. Cela signifierait que des fichiers se situant dans ces répertoires ont été
+modifiés (Ex : catalogues de matériaux, fichiers de combinaisons, ...). Avant de supprimer
+« brutalement » ces répertoires, assurez-vous de conserver, si vous le souhaitez, les fichiers
+modifiés.
+2.4 Gestion des études
+2.4.1 Création d’une étude
+Les études ou dossiers sont gérés de la même façon que l’on gère des opérations avec
+l’explorateur Windows. Ceci se fait dans la zone 1 de la plate–forme OMD. En effet pour
+fonctionner les différents modules partagent et s’échangent des données relatives au projet
+étudié, aussi convient–il en premier lieu de définir pour chaque projet un dossier de travail
+autonome. On dit qu’on “crée une étude” : dans le menu DOSSIER on choisit NOUVEAU
+(voir figure 3) et on donne un nom à la nouvelle affaire. D’un point de vue technique le
+programme crée un répertoire portant le nom de l’étude dans le sous répertoire de travail
+qui est paramétrable par l’utilisateur. Par défaut, le répertoire de travail a le chemin suivant :
+C\Graitec\Projects. Tous les fichiers de données relatives au projet étudié seront placés dans
+la zone (répertoire) qu’on vient de créer. On peut également créer un nouveau dossier en
+cliquantsimplementsurlerépertoiredetravailavecleboutondroitdelasouris.
+16
+2 Laplate–formeGraitecOMD
+Fig. 2.3: MenuDossier.
+Onpeutreprendreundossierexistantencliquantsimplementdessusdanslazone1.Lenom
+dudossierdanslequelontravailles’affichedanslebandeaubleu(noir)enhautdelafenêtre.
+Remarque :
+– Le contenu d’un dossier (étude) est automatiquement sauvegardé quand une autre est
+ouverteoucréée.
+– On peut créer des nouveaux dossiers par copie de dossiers existants en utilisant la tech-
+niqueduglisserdéposerdeWindows:
+1. En conservant maintenu le bouton gauche de la souris pendant le déplacement du
+dossier sélectionné, vous verrez le dossier se déplacer jusqu’au lâché du bouton de
+lasouris.
+2. Lorsque vous lâchez le bouton de la souris un menu contextuel vous demande si
+vousvoulezcopieroudéplacerledossiersélectionné,choisissez:«Copierici».
+2.4.2 L’étude Défaut
+L’étudeDéfautoudossierDéfaut:“uneétudeàpart”:cetteétudecontientlesparamètres
+quiserontpardéfautreprispartoutescellesqu’onvacréer.Ilnefautdoncpastravaillerdans
+cetespacemaissimplementenmodifierleshypothèses.Lechemindecetteétudedéfautpeut
+être modifié par les menus Configuration, Environnement. Il suffit de modifier le chemin
+correspondantàlaligne“DossierDéfaut”.
+17
+2 Laplate–formeGraitecOMD
+Fig. 2.4: MenuConfigurationdel’environnement.
+2.4.3 Suppression d’une étude
+IlestpossibledesupprimeruneétudeàpartirdumenuDossierenactivantSupprimer,puis
+encliquantsursonnomdanslalistequiapparaîtalors,etenfinsurSupprimer.Soyezvigilant,
+lorsquevoussupprimezundossier,voussupprimezaussitouslesfichiersqu’ilcontient.
+2.4.4 Organisation des études
+Renommer. Cette commande permet de renommer le dossier sélectionné dans l’arbores-
+cencedesrépertoires.
+Déplacer. Vouspouvezdéplacerdesdossiersenutilisantlatechniqueduglisserdéposerde
+Windows:
+1. Enconservantmaintenuleboutongauchedelasourispendantledéplacementdudossier
+sélectionné,vousverrezledossiersedéplacerjusqu’aulâchéduboutondelasouris.
+18
+2 Laplate–formeGraitecOMD
+2. Lorsque vous lâchez le bouton de la souris un menu contextuel vous demande si vous
+voulezcopieroudéplacerledossiersélectionné,choisissez:«Transférerici».
+Ilestpossibledecréerplusieursniveauxdansl’arborescencedesdossiers.
+Purger. Cetteoptionpermetdesupprimerautomatiquementdevotredisquedurlesfichiers
+qui ne sont pas indispensables pour réaliser les calculs. Il est bon d’effectuer cette mani-
+pulation lorsque une affaire est terminée, cela permet d’économiser de l’espace disque. Ces
+commandess’appliquentauxprogrammesArcheetEffel.
+Fig. 2.5: Purged’undossier.
+2.4.5 Éditions et impressions
+LesprogrammessontentièrementintégrésdansunenvironnementWindows,cequipermet
+àl’utilisateurdeparamétrerlespériphériquesd’impressionsouhaités:
+– OptionsTracés:pourl’impressiondesdifférentsgraphiques.
+– OptionsNotes:pourl’impressiondesdocumentsécrits.
+Lesimpressionssontentièrementgéréesparl’environnementWindows.
+Les notes de calculs fournis par les programmes peuvent soit être simplement visualisées
+puisimprimées,soitéditéesparl’utilisateurpourenmodifierlamiseenpageouencorerajou-
+ter des remarques. Pour cela, les logiciels sont fournis avec le WordView qui permet simple-
+mentdevisualiserlesdocumentsécrits.L’utilisateurpeutleséditeravecleWordPad(logiciel
+fournid’officeavecWindows).Cependant,ilestégalementpossibled’avoirrecoursàd’autres
+19
+2 Laplate–formeGraitecOMD
+logiciels pour visualiser ou éditer les documents écrits; il suffit simplement pour cela de mo-
+difier les chemins du Viewer et l’éditeur dans la fenêtre correspond au menu Configuration
+Environnement.
+2.5 Langues et normes
+2.5.1 Choix des langues
+ArcheetEffelfontunedistinctionentre:
+– Lalangued’utilisation
+– Lalanguedeproductiondesdocuments
+Il est tout à fait possible d’utiliser le logiciel en Anglais et de produire tous les documents
+(notes de calcul et tracés graphiques) en Allemand. La commande Options\Localisation...
+permet de choisir la langue d’utilisation des logiciels pilotés par Graitec OMD et la langue
+desdocumentscréés.Ilestégalementpossibledemettreàjourenfonctiondupaysdestinataire
+de l’affaire les libellés de la monnaie utilisée. La prise en compte immédiate ou différée du
+changementdelangueestàl’appréciationdel’utilisateur.
+Fig. 2.6: Choixdeslangues.
+20
+2 Laplate–formeGraitecOMD
+2.5.2 Choix des normes
+LacommandeOptions\Localisation... permetégalementdechoisirentredifférentesnormes
+relativesaubéton,aumétal,aubois.
+Remarque : Si le choix d’une norme s’oriente vers un règlement Eurocode, il est néces-
+sairedesélectionnerleDocumentd’applicationNationale(DAN)associé.
+Le résultat de cette commande a pour effet, de rafraîchir les vues contenant l’ensemble des
+icônes des programmes, en n’affichant que les icônes des programmes associés aux normes
+sélectionnées.
+2.6 Conseils et astuces
+Nouscitonsici,unelistedeconseilsetd’astuces(cettelisteestproposéedanslemenu«?/
+Astucesdujour»).
+1. Pour créer un raccourci d’un programme sur le bureau. Cliquez avec le bouton droit de
+lasourissurl’icôneduprogrammeconcerné.
+2. En cliquant sur l’un des trois premiers boutons de la barre d’outils (Programmes, Mo-
+dèles, Documents), vous pouvez choisir de n’afficher que les icônes associées soit aux
+programmes,soitauxmodèlesousoitauxdocuments.
+3. En double-cliquant sur l’icône d’un modèle, vous exécutez le programme associé en
+chargeantautomatiquementlemodèle.
+4. Endouble-cliquantsurl’icôned’undocument,vousexécutezlavisionneusedéfiniedans
+lemenu<Configuration\Environnement>,enchargeantautomatiquementledocument.
+5. Pourchangerlerépertoiredetravail.Choisissezlemenu<Configuration\Environnement>
+puismodifierlechampsd’éditionréservéàceteffet.
+6. Pour filtrer l’affichage des icônes des programmes, cliquez avec le bouton droit de la
+souris sur l’une des deux zones horizontales. Un menu contextuel apparaît, et vous per-
+metdechoisirlefiltrequevousdésirez(Arche,Effel,Tous...).
+7. Pour suspendre l’animation, cliquez avec le bouton droit de la souris sur le cadre de
+l’animation.Unmenucontextuelapparaîtetvouspermetdestopperl’animationGraitec.
+8. Pouréconomiserdelaplacesurvotredisquedur,vouspouvezsupprimerphysiquement
+les programmes dont vous n’avez pas les droits d’utilisation à l’aide du menu <Confi-
+guration\Désinstallation\Purger>.
+21
+2 Laplate–formeGraitecOMD
+9. En cas de problème technique, notre service technique vous demandera de lui envoyer
+lerésultatdelacommande<?\Supporttechnique>.
+10. Laplate-formeOMDvouspermetdedéfinirpourtouslesmoduleslaconfigurationdes
+tracés(marges,orientation...)vialemenu<Configuration\Tracés>.
+11. Vous pouvez copier ou déplacer un dossier à l’aide du bouton gauche de la souris, en
+sélectionnantledossierconcernéetenglissantlasourisversladestination.
+12. En changeant de dossier via l’arborescence de la plate-forme OMD, les modules s’exé-
+cuteront automatiquement dans le dossier spécifié. Par contre, en changeant le dossier
+actif dans un module, la prochaine exécution ne tiendra pas compte du nouveau dossier
+traité.
+13. Il n’est pas nécessaire d’exécuter systématiquement Graitec OMD depuis le menu Dé-
+marrerdeWindows.Ilestd’ailleurspréférabledesecréerdesraccourcissurlebureau.
+22
+3 Arche
+ARCHEestleregroupementdesmodules:
+– ArcheOssature
+– ArchePoutre
+– ArchePoteau
+– ArcheParoifléchie
+– ArcheVoile
+– ArcheDalle
+– ArchePlaque
+– ArcheSemelle3D
+– ArcheLongrine
+– ArcheMurdesoutènement
+– Outilsbéton
+– Calculdesection
+Ossature est un programme de descente de charges, intégrant une CAO 3D pour la saisie,
+permettantdemodélisersimplementtouslestypesdebâtiment,delesprédimensionner,d’en
+effectuerladescentedechargesenrespectantlesrèglementsenvigueur,puisdecréermétrés,
+notes de calculs et plans. Les modules Poutre, Poteau, Paroi fléchie , Voile, Dalle, Plaque ,
+Semelle 3D, Longrine , Mur de soutènement sont des modules dont la finalité première est
+de dimensionner, de réaliser des plans de ferraillage et des notes de calculs conformément au
+BAEL91etauEC2.Ilssontregroupéssousl’appellationModulesdeferraillage.
+3.1 Gestion des fichiers
+3.1.1 Définition
+Chaquemodulestockesesdonnéessousformedefichiers.Unfichiercomprendunnomplus
+une extension. Le nom du fichier est donné par l’utilisateur, celui de l’extension est donnée
+par le module. C’est un signe de distinction. Lorsqu’un module manipule un fichier, il le fait
+23
+3 Arche
+toujours dans l’affaire en cours. Le fichier sur lequel le programme travail est affiché dans le
+bandeaudelafenêtre.
+Danscecas,ils’agitdufichierDEFAULTdansl’affaireINITIAL.
+3.1.2 Manipulation des fichiers
+Il existe toujours un fichier par défaut, nommé DEFAULT. Il est vide et contient des choix
+de configuration par défaut. Si pour une raison quelconque il n’existe pas (si l’utilisateur l’a
+effacéparexemple),lemoduleestcapabled’enrecréerun.
+Lorsqu’on ouvre un nouveau fichier, il faut souvent lui donner un nom (certains modules
+génèrent un nom automatiquement). Lorsqu’on ouvre un fichier existant, après avoir travaillé
+dessus,onpeutl’enregistrersousunautrenom.
+Ilestaussipossibledesupprimerunfichier.
+3.1.3 Le fichier Default
+Dans toute affaire, il y a un fichier DEFAULT pour chaque module. Si ce fichier n’existe
+pas,lemoduleestcapabled’enrégénérerun.Chaquefoisquevouslancezunmodule,vousdé-
+marrez avec le fichierDEFAULT. C’est à l’utilisateur de choisir ensuite le fichier avec lequel
+il désire travailler. Comme un fichier normal, le fichier DEFAULT contient des informations
+surlaconfigurationdel’application.
+Chaque fois que vous créez un nouveau fichier, vous faites une copie des configurations du
+fichier DEFAULT. Vous pouvez même copier son contenu, si vous paramétrez cette option.
+Par conséquent, nous vous conseillons de vous servir du fichier DEFAULT afin d’y faire
+uniquementdeschoixdeconfigurations,maisdenejamaistravaillerdanscefichier.
+24
+4 Arche Ossature
+LemoduleArcheOssaturepermetdemodéliserunbâtiment,prédimensionner(ouvérifier
+suivantsilesdimensionsdesélémentssontfixéesoupas)lespoutres,poteaux,voiles,dalleset
+fondations et calculer un métré et quantitatif global. En modélisant la structure d’un bâtiment
+(forme,nature,position,...),lesélémentsextérieurs(naturedusol...)etleschargesappliquées
+(sismiques, de vent, d’exploitation, ...), le logiciel indique le cheminement des forces, déter-
+mine les sollicitations des différents éléments composant la structure et les pré dimensionne.
+Ilpermetaussid’exportercesélémentsverslesmodulesappropriéspourledimensionnement
+complet.
+4.1 Généralités
+4.1.1 Interface utilisateur
+4.1.1.1 Description de l’écran
+Fig. 4.1: Descriptiondel’écranprincipal.
+25
+4 ArcheOssature
+LemodèlegénéréparlasaisiegraphiquedeOssatureestunmodèle3D.Cependant,lasaisie
+s’apparente à une saisie 2D, puisque la troisième dimension est déterminée automatiquement
+parhauteurd’étage.
+Bandeau Partiedel’écranoùsonttdéfinisletitredel’application,
+laversion,etlenomdumodèleetdudossierencours.
+Zonegraphique Zonededessinetdereprésentationdumodèle.
+Zonedecontrôledesstatuts Zoned’affectationdesattributsàchaqueélémentdestructure.
+Menusdel’application Menusregroupantl’ensembledesfonctionnalitésdeOssature.
+Paletted’icônes Accèsdirectauxcommandesusuelles.
+Changementdevue Modificationdelavuecouranteparrotationettranslation.
+Zoom Modificationdelavueencoursparagrandissementourétricissement.
+Rafraîchissementsd’écrans Redessinducontenudelazonegraphique(avecousanslesdétails).
+Contôledesétages Spécificationduniveauactif(numéro).
+Modificationdescaractéristiquesglobalesduniveauencours.
+Zonedemessages Zoned’informationàproposdel’opérationencours.
+Zoned’avancement Avancementdanslesphasesdel’étude:Saisie,Analyse,Exploitation.
+L’utilisation de Arche Ossature est très aisée. Les options sont facilement accessibles par
+l’intermédiairedemenusdéroulantsoudepaletted’icônescomposantlescommandesusuelles.
+4.1.1.2 Menus de l’application
+Les menus de l’application permettent d’accéder à toutes les fonctionnalités d’ossature par
+lebiaisdescommandessuivantes:
+Fichiers. Commandesdemanipulationdefichier(ouverture,sauvegarde,...)etd’échange
+dedonnéesavecd’autresapplications.
+Générer. Commandesdegénérationdesélémentsdestructure,activesuniquementenphase
+desaisie,saufcellesdusous-menuhabillage.
+Modifier. Commandes d’édition de la modélisation graphique et de modifications des pro-
+priétés(attributs)desentités.
+26
+4 ArcheOssature
+Hypothèses. Commandes donnant accès aux hypothèses concernant les propriétés du bâ-
+timent,desesélémentsconstitutifs,deseschargementsetdesméthodesdecalculemployées.
+Analyser. Commandes de lancement des différentes phases de calcul du modèle et d’ex-
+ploitationgraphiquedesrésultats.
+Documents. Commandesdeproductionderapportsdiversetdedocumentsgraphiques.
+Options. Commandeslivrantl’accèsauxfenêtresdeparamétragedel’application.
+Outils. Commandeslançantdesoutilsdivers.
+‘?’. Commandesd’aides.
+Cescommandesnesontpastoujoursactives.Certainesnelesontquesouscertainesphases
+de la modélisation (saisie, analyse, exploitation), d’autres seulement lorsque un ou plusieurs
+élémentssontsélectionnés.
+4.1.1.3 Palettes d’icônes
+Cespalettesdonnentaccèsauxfonctionslesplususuellesdesmenusdel’application.
+Remarque : Placerlecurseurdelasourisquelquesinstantssurunicônefaitapparaîtreun
+texted’explicationdelafonctionàcetendroit.
+27
+4 ArcheOssature
+Modedesaisie.
+1. Passerenphasedemodélisation.
+2. Créerdeslignesd’aideàl’étageactif.
+3. Créerdesfilesdeconstructionàl’étageactif.
+4. Créerdesdallesàl’étageactif.
+5. Créerdespoutresàl’étageactif.
+6. Créerdespoteauxàl’étageactif.
+7. Créerdesvoilesàl’étageactif.
+8. Créerdessemellesisoléesàl’étageactif.
+9. Créerdessemellesfilantesàl’étageactif.
+10. Créerdesparoisàl’étageactif.
+11. Générerautomatiquementdessemellesadaptéessouschaqueporteur.
+12. Découperautomatiquementlesdallesdel’étageactif.
+13. Associerlesdallessélectionnées.
+14. Dissocierlesdallessélectionnées.
+15. Créerunétageidentiqueau–dessusdel’étageactif.
+16. Visualiser(Oui/Non)lagrille.
+17. Bornerlavisibilitédesétagesàl’étageactif.
+18. Nelaisserafficherquelesentitéssélectionnées.
+19. Visualiser(Oui/Non)lesfilesdeconstruction.
+20. Visualiser(Oui/Non)leslignesd’aide.
+21. Visualiser(Oui/Non)lesdalles.
+22. Voirlavueenplandel’étageactif.
+23. VisualisationdelastructuredanslemoduleVision(renduréaliste).
+24. Visualiserlesimpactsdesélémentsdel’étagesupérieur.
+25. Générerautomatiquementlesressauts.
+28
+4 ArcheOssature
+Moded’analyse.
+1. Ouvrirlefichierde"Saisie"dufichierencours.
+2. Lancerlecalcul.
+3. Partagerlesdallesdel’étageactif.
+4. Sonderlesélémentssélectionnés.
+5. Montrerlesliaisonsentreleséléments.
+6. Afficherlamodélisationauxélémentsfinisdelastructure.
+7. Bornerlavisibilitédesétagesàl’étageactif.
+8. Afficherlenumérodespoutres.
+9. Afficherlenumérodesvoiles.
+10. Couleursd’affichageenfonctiondeserreursdumodèle.
+11. Couleursd’affichageenfonctiondesappuisdesentités.
+12. Couleursd’affichageenfonctiondel’existenceduprédimensionnement.
+13. Couleursd’affichageenfonctiondesmatériauxdesentités.
+14. Couleursd’affichageenfonctiondesattributsdesentités.
+15. Nelaisserafficherquelesentitéssélectionnées.
+16. Visualiser(Oui/Non)lesfilesdeconstruction.
+17. Visualiser(Oui/Non)leslignesd’aide.
+18. Visualiser(Oui/Non)lesdalles.
+19. Voirlavueenplandel’étageactif.
+20. VisualisationdelastructuredanslemoduleVision(renduréaliste).
+21. Visualiserlesimpactsdesélémentsdel’étagesupérieur.
+29
+4 ArcheOssature
+Moded’exploitation.
+1. Ouvrirlefichierde"Saisie"dufichierencours.
+2. Partagerlesdallesdel’étageactif.
+3. Sonderlesélémentssélectionnés.
+4. Sonderlesélémentssélectionnésverslehaut.
+5. Montrerlesliaisonsentreleséléments.
+6. Afficherlamodélisationauxélémentsfinisdelastructure.
+7. Afficherleschargessurlespoutres.
+8. Afficherleschargessurlespoteaux.
+9. Afficherleschargessurlesvoiles.
+10. Afficherleschargessurlessemellesisolées.
+11. Afficherleschargessurlessemellesfilantes.
+12. Actionsdesélémentssélectionnéssurlerestedelastructure.
+13. Ficheduoudesélément(s)sélectionné(s).
+14. Noteanalytiquededescentedecharges.
+15. Métréetratiosdelastructure.
+16. Bornerlavisibilitédesétagesàl’étageactif.
+17. Fairefonctionner"Zoom+"et"Recadre"àuneéchelleprécise.
+18. Passerenmodeaperçuavantimpression.
+19. AppelaumoduledeArchecorrespondantàl’entitésélectionnée.
+20. Nelaisserafficherquelesentitéssélectionnées.
+21. Visualiser(Oui/Non)lesfilesdeconstruction.
+22. Visualiser(Oui/Non)lesdalles.
+23. Passeràlavueenplandel’étageactif.
+24. VisualiserlastructuredanslemoduleVision(renduréaliste).
+25. Visualiserlesimpactsdesélémentsdel’étagesupérieur.
+4.1.2 Démarche générale
+DansArcheOssature,vousallez:
+1. Modéliservotrebâtiment: ÉtapedeSaisie.
+2. Prédimensionner(ouvérifiersuivantsilesdimensionsdesélémentssontfixéesoupas)
+lesélémentsstructurauxdubâtiment: Étaped’Analyse.
+3. Exploiter les résultats soit graphiquement soit sous forme de documents écrits : Étape
+d’Exploitation.
+30
+4 ArcheOssature
+Ces trois étapes ont lieu dans le module Ossature au cours de trois phases distinctes, succes-
+sives et obligatoires. L’indicateur donnant l’état dans lequel on se trouve, est en bas à droite
+del’écran.
+Fig. 4.2: Indicateurdel’étatd’étude.
+– En saisie : Modélisation du bâtiment en utilisant des éléments de structure (poutres,
+poteaux,voiles,etc.),chargements,gestiondeshypothèses(dégressiondescharges,taux
+detravaildusol,paramètresdeprédimensionnement,etc.).
+ANALYSER–VÉRIFIER; ANALYSER–MODÉLISER
+– En calcul : Vérification du partage des dalles par la visualisation des lignes de rupture,
+visualisationducheminementdeschargesetimpressiondeplansderepérages.
+ANALYSER–CALCULER DDC; ANALYSER–CALCULER FERRAILLAGE
+– En exploitation : On peut exploiter les résultats soit graphiquement soit sous forme
+de documents écrits (Note de DDC, Métré quantitatif et estimatif, Descente de charge
+graphique).
+Les éléments Poutres, Poteaux, Semelles, Voiles, Dalles, etc. peuvent être exportés vers les
+modules de ferraillage appropriés avec reprise automatique des résultats de la descente de
+charge.
+Remarque :
+1. Unseulrésultatdecalculestdisponibleparétude;c’estàdirequepourplusieurscalculs
+sur différents modèles d’une même étude seul le dernier modèle calculé sera accessible
+enphased’exploitation.
+2. On peut repasser du modèle d’Exploitation au modèle de Saisie, du modèle de Calcul
+aumodèledeSaisie,àl’aidedel’icône: .Danstouslescasilnefautpasreprendre
+lasaisiesurlefichierencoursmais REOUVRIRlefichierde Saisie.
+4.1.3 Hypothèses bâtiment
+La première chose à faire pour modéliser un bâtiment est de définir les caractéristiques
+principales du bâtiment que l’on va étudier et définir également la variante que l’on veut étu-
+31
+4 ArcheOssature
+dier.Lorsquel’utilisateurcréésonpremierfichier(FichierNouveau),lafenêtre“Hypothèses
+bâtiment”apparaîtautomatiquementàl’écran.
+Fig. 4.3: Caractéristiquesgénéralesd’unbâtiment.
+Ondéfinitdanscettefenêtrelescaractéristiquesgénéralesdubâtiment:
+– LeniveauNGFquicorrespondàlafacesupérieuredessemelles.
+– Indiquer s’il y a présence d’étages enterrés pour que le générateur climatique puisse en
+tenircompte.
+– Le nom de la variante étudiée. Plusieurs variantes d’un même bâtiment peuvent être étu-
+diéesauseind’unemêmeaffaire.
+Lasaisied’unbâtimentsefaitétageparétage.Lagestiondesétages(hauteurouétagecourant)
+sefaitdirectementàpartirdelafenêtresituéeenbasàgauchedel’écran.
+Fig. 4.4: Gestiondesétages.
+– L’utilisateurpeutmodifierlenomdel’étage.
+– La hauteur de l’étage peut être modifiée à tout moment. Les éléments se recalent auto-
+matiquement.
+Remarque : La notion d’étage dans ossature correspond plus à la notion de niveau que la
+notiond’étage,onnepeuteneffetavoirqu’unseulniveaudeplancherparétage.
+32
+4 ArcheOssature
+4.2 Saisie des éléments
+4.2.1 Choix du mode d’accrochage
+Lorsque l’on active la génération d’une entité, le curseur est en forme de croix, et on a
+accès aux modes d’accrochage situés dans le menu en bas à gauche de l’écran. Ce menu est
+égalementaccessiblen’importeoùàl’écranpar"Alt+S"enraccourciclavier.
+Fig. 4.5: Modesd’accrochage.
+Ilexistedifférentsmodesd’accrochage.
+*
+Grille . Lepointestcrééàl’intersectiondelagrillelaplusprochedel’endroitoùsetrouvait
+le viseur quand le bouton gauche de la souris s’est trouvé enfoncé (il faut que la grille soit
+affichée).
+Clavier. On entre au clavier les coordonnées (X,Y) du point qu’on va créer. Le séparateur
+utiliséentrelescoordonnéesestla"barred’espace".
+33
+4 ArcheOssature
+*
+Extrémité . Lepointestcrééàl’extrémitélaplusprochedel’élémentsurlequelonclique.
+*
+Milieu . Lepointestcrééaumilieudel’élémentdel’élémentsurlequelonclique.
+*
+Intersection . Lepointestcrééàl’intersectiondesdeuxélémentssurlesquelsonasucces-
+sivementcliqué.Cefonctionnementpermetdenepascliqueràproximitédel’intersection.
+*
+Longueur . Le point est accroché sur l’axe de l’élément sur lequel on a cliqué à une dis-
+tancedel’extrémitélaplusprochedel’endroitduclicqu’onsaisitdèslors(avecunsignedans
+lerepèrelocalliéàl’extrémitéintéressée).
+34
+4 ArcheOssature
+*
+Perpendiculaire . Ilyadeuxmanièresd’utiliserlemodeperpendiculaire:
+– Si on a déjà le premier des deux points composant un filaire et qu’on souhaite voir le
+nouvel élément perpendiculaire à un autre. On clique trois fois sur ce dernier : le posi-
+tionnementestautomatique.
+– Si on souhaite placer un point dans le repère local propre à une extrémité d’un élément :
+On saisit les deux grandeurs successivement x et y, valeurs demandées par le logiciel
+aprèsqueleclicdelasourisaitdonnéextrémitéorigine.
+*
+Relatif . Le programme demande les coordonnées du point à ajouter dans le repère qui
+a pour origine le point remarquable le plus proche duquel on a cliqué et dont les axes sont
+parallèlesàceuxdurepèreGLOBAL.
+Magnétique. Un point est créé à l’endroit remarquable le plus proche (intersection, extré-
+mité, etc.) sauf si aucun de ceux ci ne se trouve à proximité, auquel cas c’est le point le plus
+prochedel’élémentleplusprochequiestchoisi.
+35
+4 ArcheOssature
+Poteaux. Permetd’accrocherrapidementunpoteauenvuededessus.
+*
+: Quandunmodedecréationfaitappelàun pointremarquable(extrémité,etc.),
+ilvautmieuxnepascliquerexactementsurcepointmaisàsaproximitésurl’élément
+auquelilappartient.Leprogrammetrouvetoutseullepointremarquableattendupar
+lemoded’accrochagechoisi.
+Exemple : Dans le cas où plusieurs poutres se croisent à un endroit : pour créer un point à
+l’intersection de deux d’entre elles : si on clique à l’intersection même on ne sait pas quelle
+poutre on vient de choisir et donc on ignore sur laquelle cliquer à nouveau pour terminer la
+définitiondel’intersection.
+Remarque : On peut changer de vue et de mode d’accrochage entre la création de deux
+pointsd’unmêmeélément.
+4.2.2 Choix du mode de sélection
+Lorsque le curseur de la souris est en forme de main (il n’y a aucune fonction activée),
+l’utilisateur a accès aux modes de sélection qui sont situés en bas à gauche de l’écran (au–
+dessus du menu d’accrochage). Ce menu est également accessible par "Alt+S" en raccourci
+clavier.
+Fig. 4.6: Modesdesélection.
+Sil’utilisateurestencoursdefonction,ilestfaciledereprendrelamainsoitenap-
+puyantsurlatouche"Echap",soitencliquantsurleboutondroitdelasouris.
+L’utilisateurpeutchoisirundesmodesdesélectionsuivants:
+36
+4 ArcheOssature
+Unique. c’est la fonction active par défaut. Elle permet une sélection une par une des enti-
+tés;lessélectionssecumulent.Pourdésélectionneruneentité,ilsuffitdelarecliquer.
+Fenêtre. Cette fonction permet la sélection des entités entièrement comprises dans la fe-
+nêtre.Pourutilisercemode:
+1. Activerlafonctionfenêtre.
+2. Cliquerlepremiercoindelafenêtre.
+3. Cliquerlecoindiagonalementopposé.
+Type. Permet une sélection par type d’entités, éventuellement suivant le ou les numéros et
+l’appartenanceàl’étagecourant.
+Affichage. Permetunesélectiondel’ensembledesentitésaffichéesàl’écran.
+Tout. Permetdesélectionnertouteslesentités(mêmecellesnonaffichées).
+Danger : risque de modification sur des entités non visibles (c’est à dire ceux désactivés
+àl’affichage).
+Annule. Permetdedésélectionnerlesentitésprécédemmentsélectionnées.
+Inverse. Permet d’inverser une sélection . Ainsi, les éléments non sélectionnés sont sélec-
+tionnésetlesélémentssélectionnéssontdésélectionnés.
+Critère. Permet de sélectionner les éléments suivant différents critères : par matériaux, par
+prédimensionnement,parerreur...
+37
+4 ArcheOssature
+4.2.3 Menu Modifier
+4.2.3.1 Modifier/Étages
+La fenêtre "Modification des étages" permet la gestion des étages soit par copie intégrale,
+soit en créant un étage vide en ne duplicant qu’une partie des éléments. Cette fenêtre permet
+également de supprimer l’étage actif (situé en bas à gauche de l’écran). Cette fonction n’est
+activequeenphasedesaisie.
+Fig. 4.7: Modificationdesétages.
+4.2.3.2 Modifier/Attributs
+Lesfonctionsdecetteoptionpermettentdemodifierunensembled’éléments:modification
+des dimensions, des matériaux, des chargements externes. Les fonctions Associer/Dissocier
+dalles,permettentd’établiroudesupprimerlacontinuitéentreplusieurspanneauxdedalles.
+4.2.3.3 Modifier/CAO
+Lesprincipalesfonctionsdecetteoptionsont:
+Copier. Cettefonctionpermetlacopied’entitéspar:
+– Translation(vecteur).
+– Rotation(point+axe+angle).
+– Symétrie(point+plan).
+La copie peut être multiple en précisant le "nombre de copies". On peut également copier les
+élémentsd’unniveauàl’autre.
+38
+4 ArcheOssature
+Fig. 4.8: Copied’éléments.
+NB : OnpeututiliserlacommandeOutils/Coordonnéesafindepouvoirrécupérerautoma-
+tiquementlescoordonnéesd’unvecteurdetranslation,oubienlescoordonnéesd’uncentrede
+rotationousymétrie.Cettecommandedoitalorsêtreintercaléeentrelasélectiondel’élémentet
+lafonction"Modifier/CAO".
+Déplacer. Permetledéplacementd’entitéspar:
+– Translation(vecteur).
+– Rotation(point+axe+angle).
+– Symétrie(point+plan).
+Fig. 4.9: Déplacementd’éléments.
+39
+4 ArcheOssature
+NB : La remarque concernant l’utilisation de la commande Outils/Coordonnées pour la
+fonction"Copier"estvalableici.
+Supprimer. Cettefonctionpermetlasuppressiond’entités.
+Relimiter. Permet un allongement ou un raccourcissement d’entités. Pour ce faire, on pro-
+cèdedelamanièresuivante:
+1. Sélectionuneouplusieursentitésàrelimiter.
+2. MenuModifier/CAO/Relimiter⇒lasourissetransformeenunepairedeciseaux.
+3. Cliquersurl’entitéservantdefrontièreàlarelimitation.
+Fig. 4.10: Relimitationd’éléments.
+Couper. La procédure est identique à celle de relimitation, sauf qu’au lieu d’être modifié,
+chaqueobjetestdiviséendeuxélémentsindépendants.
+4.2.4 Les éléments
+4.2.4.1 Les lignes d’aide et les files de construction
+Les lignes d’aide sont considérées comme telle e n’ont donc aucune propriétés mécanique.
+Lorsdel’importd’unfichierDXFenimportationglobale(Fichier–Importer–DXF),lestraits
+importéssontconsidéréscommedeslignesd’aides.Ellessontsaisiesenutilisantlesdifférents
+modesd’accrochageetdéfiniespardeuxpoints.
+40
+4 ArcheOssature
+Les files de construction sont gérées différemment : elles ne sont saisies que par un seul
+point,appelé"pointd’insertion".L’utilisateurfixeàl’avancedanslafichedestatut,quiappa-
+raît en haut à gauche de l’écran en cliquant sur l’icône de la file de construction, la longueur,
+l’angle d’inclinaison et le nom de la file de construction. Il faut préciser également le place-
+mentdupointd’insertiondelafile(début,milieuoufindelafile).
+Les files de construction et lignes d’aide peuvent être affichées ou non à l’écran par un
+simpleclicsurl’icônecorrespondantenbasàdroitedel’écran.
+Onpeutégalementmodifierletypeoulestyledelignepourl’affichagedesfilesdeconstruc-
+tionoudeslignesd’aideenpassantparlemenu Option–Affichage.
+4.2.4.2 Les éléments de construction
+La saisie des éléments de construction peut se faire soit à partir du menu correspondant
+"Générer ", soit à partir de la barre d’icônes située à droite de l’écran. Lorsque l’on crée un
+élément , on a une fiche de statut qui apparaît et qui résume l’intégralité des caractéristiques
+del’élémentcréé.
+Dalles Ondéfinitlescaractéristiquesdesdallesdanslafichedestatutsuivante:
+Fig. 4.11: Saisiededalles.
+41
+4 ArcheOssature
+Indication du sens de portée. L’utilisateur peut imposer un sens de portée aux dalles
+(deux sens porteurs : un sens horizontal ou un sens vertical). Il est également possible de
+définir un sens de portée quelconque en modifiant les coefficients porteurs pour chaque côté
+etcedanslafenêtre"Sensdeportée",quiapparaîtencliquantsurl’option définitiondansla
+fichedestatut.
+Fig. 4.12: Sensdeportée.
+Fonctionnement. L’utilisateur a la possibilité d’imposer un fonctionnement de plancher
+oudelaisserunedétectionautomatiquedufonctionnement.Ilexistetroistypesdeplanchers:
+– Plancher Courant : il s’agit d’une dalle qui est supportée sur sa périphérie par des appuis
+linéairesetquin’estsoumisequ’àdeschargessurfaciquesuniformémentréparties.
+– Plancher Dalle : il s’agit d’une dalle qui est supportée en partie ou en totalité par des
+appuisponctuels.
+– Plancher Reprise : ce cas correspond parfaitement aux planchers de reprise dans les
+construction, c’est–à–dire que la dalle doit reprendre des charges ponctuelles ou des
+chargeslinéaires(voilequiretombesurunedalleparexemple).
+Dans le cas où l’utilisateur utilisera la méthode des éléments finis "MEF" pour réaliser la
+descente de charges "DDC", le fonctionnement de la dalle influera sur la modélisation qui
+sera faite aux éléments finis. Cela influera également à l’export vers le module de ferraillage.
+Une dalle courante sera exportée vers le module dalle, alors que les planchers dalles ou les
+planchersderepriseserontexportésverslemoduleplaque.
+Chargement. LeboutonChargementouvreunefenêtrepermettantd’appliquerunecharge
+"externe"(enplusdeladescentedecharges)répartiesurtouteladalle.
+42
+4 ArcheOssature
+Fig. 4.13: Chargement.
+Leschargesàgénérersont:
+– G:Chargespermanenteshorspoidspropredeladalle.
+– Q:surchargesd’exploitation.
+– AC:Partiedeschargespermanentesappliquéesaprèslescloisons.
+Attention à la valeur des charges permanentes saisies dans AC. On peut avoir deux cas de
+figure, soit on prend dans AC une partie des charges permanentes, soit on prend les charges
+AC en plus des charges permanentes, elles sont dans ce cas considérées comme un autre cas
+dechargespermanentes.Lechoixsefaitdans Hypothèses–Méthodesdecalcul–Prédim.
+Remarque :
+1. Pourqu’unchargementdeneigeouventsoitgénérésurladallelorsducalculclimatique,
+oncochelacase Chargesdeneige et/ouChargesdeventdanslafenêtre Charges.
+2. Ladallenereprendpaspardéfautdechargeautrequerépartiesurtoutesasurface.
+Matériaux. Un matériau est associé à chaque entité. On le choisit dans un catalogue que
+l’onpeutcompléteret/oumodifier.Lacréationd’unnouveaumatériausefaitendeuxétapes;
+on décrit dans un premier temps les caractéristiques mécaniques du matériau (Hypothèses–
+Matériaux) puis on décrit toutes les données nécessaires pour le pré dimensionnement et le
+métréquantitatifetestimatifdubâtiment(Hypothèses–Méthodesdecalcul–Prédim).
+Dimensions. Cesontlesdimensionsetleratiod’acierdel’entité.
+43
+4 ArcheOssature
+– épaisseur:épaisseurdeladalle.
+– R (/m2):quantitéd’acierparmètrecarrédedalle.
+Lorsque l’utilisateur impose une dimension, le logiciel se contente de vérifier les dimensions
+imposées, par la fonction Analyser–Vérifier–Dimensions, et éventuellement d’envoyer un
+messaged’avertissementsil’épaisseurestinsuffisante.
+Si une ou plusieurs valeurs est laissée à 0, Ossature se chargera de pré dimensionner au-
+tomatiquement l’élément au niveau des dimensions et des ratios d’aciers, en respectant les
+valeursnonnulles.
+Hypothèses MEF. Par défaut : cette case donne accès aux différentes modélisations élé-
+mentsfinisdeladalle.Sil’utilisateurimposeunemodélisationdanscettecase,lesparamètres
+de Hypothèses–Méthodes de calcul DDC–Méthode Elements finis sont ignorés pour cet
+élémentenparticulier.Lesmodélisationsdisponiblessont:
+– Nonmodélisée.
+– diaph.Indéformable.
+– Maillagedecoque.
+X/Y : il s’agit de la dimension des mailles utilisées lors d’un calcul aux éléments finis. La
+valeur par défaut est de 0.9 m par 0.9 m. Ces dimensions sont utilisées telles quelles pour un
+calcul de contreventement, une descente de charges complète aux éléments finis, ou simple-
+mentuncalculdedallelocalauxélémentsfinis.Parcontrelorsdel’exportdeladallepourun
+calcul dans le module Plaque : la plus petite des deux dimensions est conservée pour générer
+desmaillescarrées.
+Report de charges. Onchoisitlaméthodeemployéepourlereportdescharges:
+– Lignes de rupture : le logiciel reporte les charges suivant les lignes de ruptures déter-
+minées en fonction des sens de portée imposés (voir paragraphe "Indication du sens de
+portée"ci–dessus).
+– Report EF : le logiciel va mailler la dalle et faire un petit calcul Éléments Finis de façon
+àreporterleschargesenfonctiondelarigiditédanschaquedirection.
+Ilyapossibilitéderesterendétectionautomatique.Danscecas,lelogicieldétermineraauto-
+matiquementlaméthodeàemployerselonlefonctionnementdeladalle.
+Poutres Ondéfinitlescaractéristiquesdespoutresdanslafichedestatutsuivante:
+44
+4 ArcheOssature
+Fig. 4.14: Saisiedepoutres.
+Conditions aux limites. DébutouFinpermetdemodifierlaconditiond’appuiàl’origine
+ou à l’extrémité de la poutre. Par exemple, si une poutre repose ne repose que sur un poteau
+à l’une de ses extrêmités, elle ne sera stable que si on active l’encastrement correspondant à
+cetteextrémité.
+Classe de la poutre. Principale : si cette case est cochée la poutre est principale. Ceci
+permetdedistinguerlespoutresprimairesdespoutressecondaireslorsquecelle-cisecroisent,
+et que le logiciel ne peut pas déterminer automatiquement le rang. Par définition une poutre
+secondaire repose sur une poutre primaire. Attention car si une poutre doit être suspendue à
+un voile, l’attribut "Principale" doit être désactivé, et l’attribut "Poutre Voile" du voile doit,
+lui, être activé (voir paragraphe sur les voiles). Dans le cas des intersections des poutres, le
+logiciel a plusieurs règles qu’il applique suivant le cas de figure de façon à déterminer les
+poutresporteusesetcellesportées.
+⇒ Lorssqu’il y a un poteau à l’intersection de deux poutres, il n’y a pas d’hésitation pos-
+sible,touteslespoutressontprimaires.
+⇒ Lorssqu’il n’y a pas de poteau à l’intersection de deux poutres, plusieurs configurations
+sontpossibles:
+– Configurationencroix:
+45
+4 ArcheOssature
+1. Les deux poutres sont "Principales", alors Ossature détectera une erreur lors de la
+modélisation.
+2. Aucunedesdeuxpoutresn’est"Principale",alorsOssaturedétecterauneerreurlors
+delamodélisation.
+3. Unepoutreest"Principale",l’autrenel’estpas,Ossaturecouperaautomatiquement
+lapoutre"Non–Principale"surlapoutre"Principale".
+– Configurationen"T":
+1. Les deux poutres sont "Principales", alors Ossature détectera que la poutre numéro
+2reposesurlapoutrenuméro1.
+2. Aucune des poutres n’est "Principale", alors Ossature détectera que la poutre nu-
+méro2reposesurlapoutrenuméro1.
+3. Unepoutreest"Principale",l’autrenel’estpas,Ossaturecouperaautomatiquement
+lapoutre"Non–Principale"surlapoutre"Principale".
+– Configurationen"L":
+1. Lesdeuxpoutressont"Principales",alorsOssatureferareposerlapoutredenuméro
+leplusélevésurcelledenuméroleplusfaible.
+2. Aucunedesdeuxpoutresn’est"Principale",alorsOssatureferareposerlapoutrede
+numéroleplusélevésurcelledenuméroleplusfaible.
+3. Une poutre est "Principale", l’autre ne l’est pas, Ossature fera reposer la poutre
+"Non–Principale"surla"Principale".
+– Poutreconsole:Danslecasd’unepoutreconsole,siellenereposequesurunseulappui,
+lapoutredoitêtreencastréeàcetteextrémité(définidanslazonedestatuts).
+Chargement. L’utilisateur a la possibilité d’appliquer sur les poutres des charges en plus
+de la descente de charges et ce directement dans la fiche de statut de la poutre. On peut ap-
+pliquer des charges (externes) ponctuelles, linéaires ou triangulaires sur une partie ou sur la
+totalité de la travée. Pour ce faire, on clique sur le bouton Chargement; la fenêtre Charges
+apparaît.
+Matériaux. Onpeut,commepourn’importequelélémentdestructure,définirunmatériau
+quelconquepourlespoutres(voirlecasde"Dalles").
+46
+4 ArcheOssature
+Dimensions. L’utilisateur a la liberté d’imposer les deux dimensions de la poutres ou bien
+de laisser les dimensions nulles auquel cas le logiciel se chargera du pré dimensionnement. Il
+estégalementpossibleden’imposerqu’uneseuledesdeuxdimensions.
+Poteaux Ondéfinitlescaractéristiquesdespoteauxdanslafichedestatutsuivante:
+Fig. 4.15: Saisiedepoteaux.
+Coefficients de flambement et dégression verticale. On désigne par k le coefficient
+de flambement du poteau (coefficient de liaison). Ce coefficient permet de définir la longueur
+de flambement du poteau : L =k·L; où L est la hauteur de l’étage. La hauteur de l’étage est
+f
+calculéededessusdedalleàdessusdedalle.Pardéfautlecoefficient k vaut1.
+Leparamètredqcorrespondaucoefficientmultiplicatifpermettantdeprendreencomptela
+dégression verticale des surcharges d’exploitations (voir Modifier– Attributs–Dégression).
+Ce coefficient n’est actif que si l’option de prise en compte des dégressions verticale a été
+sélectionnée dans la fenêtre : Hypothèses / Méthodes de Calcul–DDC / Méthode Régle-
+mentaire.
+Angle d’orientation. Cet angle correspond à l’orientation du poteau en plan par rapport
+auxaxesdurepèreglobal.
+47
+4 ArcheOssature
+Forme. Il existe différentes formes de section de poteau. Les attributs de dimensions sont
+activéssuivantcellechoisie:
+– Silasectioncarréeestenfoncée: seula,lecôtéducarré estactif.
+– Silasectionrectangleestenfoncée: seuls aetb,lescôtésdurectanglesontactifs.
+– Silasectioncirculaireestenfoncée: lediamètre ⊘estactif.
+Chargement. LeboutonChargementouvreunefenêtrepermettantd’appliquerdescharges
+"externes"ponctuellesentêtedecepoteau(enplusdeladescentedecharges).
+Matériaux. Idemquelesautreséléments.
+Dimensions. Tout comme les autres éléments, on peut ou pas imposer des dimensions en
+plan du poteau, la hauteur du poteau étant automatiquement callée sur la hauteur de l’étage.
+Onpeutégalementdonnerleratiod’aciers(ouquantitéd’aciers)dupoteau.
+– a,b:longueur,largeurdelasectionquandelleestrectangleoucarrée.
+– ⊘:diamètredupoteauquandilestcirculaire.
+– R (/ml):quantitéd’aciersparmètrelinéairedepoteau.
+Voiles Ondéfinitlescaractéristiquesdesvoilesdanslafichedestatutsuivante:
+Fig. 4.16: Saisiedevoiles.
+48
+4 ArcheOssature
+Taux de remplissage et coefficient de dégression.
+– Tx : Ce coefficient, appelé taux de remplissage, permet d’indiquer un pourcentage d’ou-
+verture non localisé avec précision dans le voile. Si la valeur 80% est saisie (soit un
+coefficientde0.80),alors80%dupoidspropreduvoileestprisencomptedanslecalcul
+dedescentedecharges.Pardéfautletauxderemplissageest100%.
+– dq:Ceparamètrecorrespondaucoefficientmultiplicatifpermettantdeprendreencompte
+la dégression des surcharges d’exploitation. Ce coefficient fonctionne sur le même prin-
+cipequepourlespoteaux.
+Situation. La situation du voile influe sur le calcul du ratio d’acier (ou quantité d’aciers)
+duvoile.Ilexistedeuxsituations: IntérieurouExtérieur.
+Fonctionnement. Pour faire apparaître les différents types de voiles, on clique sur la case
+Détectionauto.
+– Voile courant : voile ne reprend pour chargement que les efforts s’appliquant sur son
+arête supérieure, ou issus d’autres voiles le coupant. Les efforts diffusent avec un angle
+propreaumatériau.
+– Poutre voile : voile capable de reprendre des charges en fibre inférieure et de les relever
+jusqu’àsesappuis.
+– Console : voile en console capable de reprendre des charges en fibre inférieure et de les
+releverjusqu’àsonappui.
+– Détectionauto:Ossaturedétermineseulletypeduvoile.
+Chargement. Le bouton Charges ouvre une fenêtre permettant d’appliquer des charges
+(externes)ponctuelles,répartiesoutriangulairessurtoutouunepartieduvoile.
+Matériaux. Idemquepourlesautreséléments.
+Dimensions. Comme pour les autres éléments, on a la possibilité d’imposer ou de laisser
+libre l’épaisseur et le ratio d’aciers (ou quantité d’aciers) du voile. La hauteur étant automati-
+quementcaléesurcelledel’étage.
+Hypothèses MEF. La case Par défaut permet de définir le type de modélisation que l’on
+veut appliquer afin de créer le modèle éléments finis. Si l’utilisateur impose une modélisa-
+tion dans cette case, les paramètres de Hypothèses / Méthode de calcul–DDC / Méthodes
+49
+4 ArcheOssature
+Élements finis sont ignorés pour cet élément en particulier. Les modélisations disponibles
+sont:
+– Croixindéformable.
+– Poutreéquivalente.
+– MaillageCoques.
+Semelles isolées On définitlescaractéristiquesdessemellesisoléesdanslafichedestatut
+suivante:
+Fig. 4.17: Saisiedesemellesisolées.
+Angle d’orientation. Cet angle correspond à l’angle d’orientation en plan de la semelle
+parrapportaurepèreglobal.
+Chargement. En utilisant le bouton Chargement on peut appliquer une charge (externe)
+ponctuelleentêtedesemelleisoléequ’onparamètreenG,QetAC.
+Matériaux. Idemquepourlesautreséléments.
+Dimensions. Idemquepourlesautreséléments.
+50
+4 ArcheOssature
+Semelles filantes Ondéfinitlescaractéristiquesdessemellesfilantesdanslafichedestatut
+suivante:
+Fig. 4.18: Saisiedesemellesfilantes.
+Chargement. L’utilisateur peut appliquer des charges (externes) ponctuelles ou réparties
+surunepartieoutoutelasemelle.
+Matériaux. Idemquepourlesautreséléments.
+Dimensions. On peut ou pas imposer les dimensions de la semelle filante et son ratio
+d’aciers(ouquantitéd’aciers).
+– l :largeurdelasemelle.
+– épaisseur:épaisseurdelasemelle.
+– R (/m3):quantitéd’aciersparmètrecubedesemelle.
+Comme pour les autres éléments, si une ou plusieurs valeurs est laissée à 0, Ossature prédi-
+mensionne la semelle, en respectant les valeurs non nulles. Si les valeurs sont imposées, elles
+peuventêtrevérifiéesparlafonction Analyser/Vérifier/saisie.
+4.2.5 Gestion de l’affichage
+Pourgérerl’affichagedelastructureetdesautreséléments,ilexistedeuxmoyens.
+51
+4 ArcheOssature
+4.2.5.1 Gestion générale de l’affichage
+Lecontrôledel’affichagesefaitparlemenu Options/Affichage.
+Pardéfautlastructureestvisualiséesousformefilaire.Pourvisualiserlesdétailsdemandés,
+il suffit de cliquer sur l’icône correspondant (situé en bas à gauche de l’écran). Cette fonction
+estaccessiblepar"Alt+E"enraccourciclavier.
+Le menu Options / Affichage fait apparaître une fenêtre qui se décompose en deux sous–
+fenêtres:
+– Lapremièresous–fenêtrecorrespondauxélémentsdestructure(poutres,poteaux,voiles,etc.).
+– Ladeuxièmesous–fenêtrecorrespondauxautreséléments(lignesd’aide,filesdeconstruc-
+tions,cotation,etc.).
+Affichage–structure. Pour chaque type d’élément de structure il est possible de paramé-
+trerl’affichage:
+– Elément:Lesélémentsd’unefamillesontaffichéssilacasecorrespondanteestcochée.
+– Nom:Lesnumérosdesélémentsd’unefamillesontaffichéssilacasecorrespondanteest
+cochée.
+– Chargement:Leschargementsappliquésparl’utilisateurauxélémentsd’unefamillesont
+affichéssilacasecorrespondanteestcochée.
+– Dimensions : En activant la case correspondante, l’équarrissage des éléments apparaît
+lorsd’unrafraîchissementenmode"détail".
+52
+4 ArcheOssature
+Fig. 4.19: Affichagedesélémentsdestructure.
+Remarque :
+– Chargementetdimensionssontdesdétails,pourlesafficherilfautrégénérerl’écranavec
+lafonctionderafraîchissement,accessiblepar"Alt+Q"enraccourciclavier.
+– Le bouton portant le nom d’un élément donne accès par un simple clic à sa couleur
+d’affichage.
+Affichage–Autres éléments.
+– Affichage des entités et des détails : Pour chaque type d’élément de cet onglet, il est
+possible de paramétrer l’affichage. Trois paramètres sont accessibles, chacun par une
+colonnedeboutonsoucasesàcocher.
+– Elément : L’élément de la famille correspondante est affiché, si la case correspondante
+estcochée.
+– Styledeligne:Unclicsurceboutonaffichelesdifférentsstylesdeligneaccessibles.
+– Police : Permet d’ajuster la taille des polices de caractère relative aux éléments de la
+lignecorrespondante.
+Il est possible de modifier la couleur d’affichage de chaque élément en cliquant sur le bouton
+d’élémentcorrespondant.
+– Etages visibles : Ne laisse visible à l’écran que les étages dont les numéros sont entre
+53
+4 ArcheOssature
+ceuxspécifiésdans EtagedébutetEtagefin.Tous:affichetouslesétagesdumodèle.
+Fig. 4.20: Affichagedesautreséléments.
+4.2.5.2 Gestion de l’affichage par sélection
+Cette gestion de l’affichage par sélection est d’autant plus intéressante qu’elle permet de
+n’afficherqu’unepartiedelastructureparsimplesélection.
+Pourl’utiliser:
+– Définirunesélection(enutilisantlesdifférentsmodesdesélection).
+– Puis cocher la case "Afficher Sélection" dans la fenêtre Options–Affichage ou utiliser
+l’icône "Ne laisser afficher que les entités sélectionnées", situé dans la palette d’icônes à
+droitedel’écran.
+54
+5 Descente de charges
+IlexistedansArcheOssaturedeuxméthodesdecalculpourladescentedecharges:
+– La méthode traditionnelle (appelée également Méthode Réglementaire) qui est la mé-
+thodequiserapprocheleplusdeshabitudesdecalculdel’ingénieur.
+– Laméthodeauxélémentsfinisquipermetd’étudierladescentedechargeshorizontaleen
+prenantencompteleseffetsdûsauséismeetauxchargesclimatiques.
+Lechoixdecesdeuxméthodessefaitparl’intermédiairedelacommande"Hypothèses/Méthode
+de calcul–DDC/Choix des méthodes". L’utilisateur a le choix de mixer les deux méthodes,
+ou bien de n’utiliser qu’une seule méthode (on peut calculer la descente de charges entière-
+mentauxélémentsfinis).
+Fig. 5.1: Choixdesméthodesdecalcul.
+5.1 Méthode Réglementaire
+LaméthoderéglementaireestbaséesurlanormeNFP06–001:"Basedecalculdesconstruc-
+tions.Chargesd’exploitationdesbâtiments".
+55
+5 Descentedecharges
+5.1.1 Principe général de fonctionnement
+Le principe général de la descente de charges consiste à calculer dans le bon ordre tous les
+éléments de la structure jusqu’aux fondations. Chaque élément reçoit des actions et génère
+des réactions qui deviennent à leur tour les actions d’autres éléments. Ossature doit donc
+déterminerl’ordredecalculdesélémentsetlescalculerdupremieraudernier.
+Au sein d’un étage, les dalles sont calculées en premier. Elles génèrent des actions sur les
+poutres et les voiles qui la supportent (ou la suspendent pour les poutres-voile). Ensuite, les
+poutres de rang le plus élevé sont calculées (poutres portées). Elles génèrent des réactions,
+qui deviennent les actions des poutres de rang inférieur (poutres porteuses), des voiles et des
+poteaux.Lespoutres–voilesontensuitecalculéesdanslemêmeordrequelespoutres:durang
+le plus élevé au rang le plus faible. Sont enfin calculés les voiles et les poteaux qui génèrent,
+eux,desactionssurl’étageinférieur.
+Cetteméthodepeutêtredécriteparleschémasuivant:
+Fig. 5.2: Casd’unedallereposantsurappuis.
+Cemodèleesttraitédelamanièresuivante:
+56
+5 Descentedecharges
+Fig. 5.3: Philosophiegénéraledeladescentedechargestraditionnelle.
+Cette méthode permet à l’utilisateur de connaître parfaitement le cheminement des charges
+et ainsi de réaliser une descente de charges qui coincide parfaitement à ce qu’il a l’habitude
+defairemanuellement.
+Cetteméthodeneprendencomptequeleseffortsverticaux,lesélémentssontconnectésen
+conséquence:
+– Lespoutres(continuesousimples)reposentsimplementsurleursappuis.
+– Les voiles reposent simplement sur leurs appuis et peuvent reprendre des charges appli-
+quéessurleurfibreinférieure.
+– Lesdallessontarticuléessurleursappuis.
+– Lespoteauxetlesvoilesreposentsimplementsurleurporteurssaufsurleursfondations,
+surlesquellesilspeuventêtreencastrés.
+– Lessemellesisoléesetfilantessontencastréesourotulées.
+– Lespoutrestravaillentenflexionverticale,continuesouisostatiques.
+– Lesvoilesfonctionnentdelamêmemanièrequelespoutres.
+– Les dalles sont isostatiques lorsque leur report de charges s’effectue par la méthode des
+lignesderupture,oulorsqu’ils’effectueparlecalculauxélémentsfinisetqu’ellesn’ont
+pas été associées. Elles sont continues quand elles ont été associées (le report de charges
+s’effectuealorsauxélémentsfinis).
+– Les poteaux ne transmettent que des efforts normaux. Ils ne peuvent fonctionner en sus-
+57
+5 Descentedecharges
+pente.
+– Lessemellesisoléesetfilantesnereprennentquedeseffortsverticaux.
+5.1.2 Caractéristiques des matériaux
+Pour réaliser la descente de charges traditionnelle Ossature utilise différentes caractéris-
+tiquesdesmatériaux:
+– Densité :Poidsvolumiqueutilisépourcalculerlepoidspropredeséléments.
+– Angle de diffusion : Angle utilisé pour déterminer la diffusion des charges verticales
+danslesvoiles.Cetangleestdonnésurl’horizontale.
+Fig. 5.4: Angledediffusion.
+Les contraintes limites de l’acier et du béton saisies dans ossature sont utilisées dans le
+cadre du prédimensionnement précis de la section de béton et du ratio d’acier. Ces valeurs
+sontexportéesverslesmodulesdeferraillageenmêmetempsquelesélémentsqu’onsouhaite
+ferrailler.
+5.1.3 Chargements pris en compte
+5.1.3.1 Natures des chargements
+Comme nous l’avons vu lors de la description des éléments, la descente de charges tradi-
+tionnelleprendencomptetroistypesdechargements:
+– Leschargespermanentes: G.
+– Leschargesd’exploitation:Q.
+– Leschargesdecloison: AC.
+Leschargespositivessontdescendantes.
+58
+5 Descentedecharges
+N.B. : Les charges AC peuvent être considérées comme déjà comptées dans G, ou bien
+ajoutées à G par le logiciel lors de ses calculs (voir Hypothèses / Méthode de calcul – Prédi-
+mensionnement(ongletGlobal)).
+Dans le cas où les charges AC sont comptées dans G : il s’agit de charges permanentes
+issues d’équipement placés dans la structure après la réalisation du gros œuvre (les cloisons
+par exemple). Cette distinction entre types de chargement est nécessaire pour le calcul de la
+flèche BAEL des poutres. D’autre part le prédimensionnement des éléments dans Ossature se
+faitalorsenfonctiondeGetQ.
+Dans le cas où AC est un cas de charge à part de G : le calcul dans le module de ferraillage
+poutre ne distingue pas AC de G. Le programme ajoute à G la valeur de AC, et ce dernier
+paramètre reste nul dans le module de ferraillage. D’autre part le prédimensionnement dans
+OssaturesefaitenfonctiondeG,AC,etQ.
+5.1.3.2 Poids propre
+Le poids propre des éléments : celui–ci est automatiquement calculé par le programme à
+partir des dimensions des éléments et de la densité du matériau dont ils sont faits. Que les
+dimensions données à un élément soient nulles ou partiellement renseignées, le programme
+le pré dimensionne (méthode indiquée dans Hypothèses/Méthode de calcul–predim...) et
+prendencomptelepoidspropreinduit.
+5.1.3.3 Chargements créés par l’utilisateur
+L’utilisateur peut de plus ajouter des charges externes, G, Q ou AC sur tous les éléments.
+Ceschargessontsaisiesdanslafenêtredestatutsdeséléments.Suivantlesélémentsdifférents
+typesdechargementspeuventêtregénérés:
+– Semellesisoléesetpoteau:Chargesponctuelles.
+– Semellesfilantes,voiles,poutres:Chargesponctuellesàtoutendroitlelongdel’élément,
+chargesrépartiesuniformesoutriangulairessurtoutoupartiedel’élément.
+– Dalles : Charges réparties surfaciques uniformes sur toute la surface de la dalle, charges
+ponctuellesoulinéairesparlebiaisdeladescentedecharges:enutilisantunpoteaupour
+unechargeponctuelle,unecloisonpourunechargelinéique.
+5.1.4 Pré dimensionnement
+Lorsque les éléments de la structure ne sont pas pré dimensionnés, cette tâche incombe
+alors au programme. Pour chaque élément, au fur et à mesure de la descente de charges, le
+59
+5 Descentedecharges
+programme détermine les efforts appliqués et en déduit ses dimensions ainsi que les ratios
+d’aciers.Ceprédimensionnementpeutêtreeffectuésuivanttroisméthodes:
+– Leprédimensionnementparabaques(personnalisablesparl’utilisateur).
+– Leprédimensionnementprécisparcalcul(Poutre,Poteau,Semelle,Voile).
+– Leprédimensionnementaveclesmodulesdeferraillage.
+Lechoixdelaméthodesefaitparlemenu "Hypothèses/Méthodesdecalcul-Prédim...":
+Fig. 5.5: Choixdelaméthodedeprédimensionnement.
+Pour un équilibre parfait de la descente de charges, il faut alors lancer deux fois les calculs
+pour avoir l’équilibre en raison de l’absence d’information sur la dimension des porteurs lors
+d’un premier calcul : le petit cube de béton commun à la poutre et au poteau est compté deux
+fois.Lorsdudeuxièmecalcul,cepetitcuben’estcomptéqu’uneseulefois.
+5.1.4.1 Pré dimensionnement par Abaques
+Les abaques sont personnalisables par l’utilisateur au travers du modèle "Arche Abaques",
+leprédimensionnementsefaitàpartirdeshypothèsesgénéralessuivantes:
+Charges. Leschargesindiquéesdanslesabaquessontdeschargesàl’ELS.Ellesintègrent
+automatiquementlepoidspropre(lachargeàl’ELSnecontientdoncpascepoidspropre).La
+combinaisonretenueest:
+60
+5 Descentedecharges
+– ChargeELS=G+Q.
+– ChargeELU=1.4*ChargeELS.
+Interpolations. L’interpolation effectuée entre les courbes est linéaire en abscisse comme
+enordonnée.
+Arrondis. Ossaturearronditlesrésultatsduprédimensionnementetducalculduratiod’acier
+issudesabaquesàlatolérancedéfinieparl’utilisateurdanslabibliothèquedematériaux(Voir
+figure3.25).Ils’agitd’unarrondiàlavaleursupérieure.
+Les matériaux. Les valeurs de résistance de l’acier et du béton constituants les éléments
+répondantauxcourbesdesabaquessontfixes:
+– Lalimiteélastiquedel’acier: f =500MPa.
+e
+– Larésistancecaractéristiqueàlacompressiondubéton: f 28=25MPa.
+c28
+Modification du fichier d’abaques. Pour modifier les courbes du fichier par défaut,Il
+faut:
+1. Enregistrerlefichierdéfautsousunnouveaunom:parlacommande"Fichier/Enregistrer".
+2. Sélectionnerl’élémentconcernédanslemenuélément.
+3. Danslemenu "Miseàjour",choisircourbe,puisdimensionnementouferraillage.
+4. Choisirensuitelenumérodelacourbe,refermerlafenêtre.
+5. Saisir les points sur le graphique à l’aide de la souris, ou bien au clavier après avoir
+pressélabarreespace.
+6. Enregistrerànouveaupar"Fichier/Enregistrer".
+Ilestpossibledemodifierd’autresparamètres,parlemenu "Miseàjour/Paramètres":
+– Lesdimensionsminimumetmaximumdeséléments.
+– Lesrapportsdedimensionsimposés.
+– Lesvaleursdechargementsreprésentésparlesdifférentescourbes.
+Remarque : lamodificationdesvaleursdechargementn’entraînerapaslamodificationdes
+courbes:ellesinterviennentseulementlorsdesinterpolations.
+LemenuMiseàjour/Matériauxnemodifiepasleshypothèsesdecalculmaisuniquement
+lesinformationsliéesaujeudecourbesdufichierconcerné.
+61
+5 Descentedecharges
+5.1.4.2 Pré dimensionnement précis par calcul
+LeprédimensionnementprécisparcalculfaitappelàdesroutinesinternespropresàOssa-
+tureetconcernelesélémentssuivants:
+– Poutre.
+– Poteau.
+– Semelleisolée.
+– Semellefilante.
+Lecalculdesdimensionsdecesélémentsnefaitpasappelauxmodulesdeferraillage.
+Lescalculssontdétaillésdanslafichedechacundeséléments.Ilsontencommun:
+– L’utilisationdeshypothèsesconcernantlarésistancedesmatériauxsaisiesdanslafenêtre
+"Hypothèses/Matériaux".
+– L’arrondi de la dimension à la valeur supérieure suivant le pas fixé dans la boite de dia-
+logue"Hypothèsesméthodedecalcul–prédim...".
+– Nonpriseencomptedesdéplacements.
+– Leschargementsconsidérésàl’ELU.
+Leprédimensionnementprécisdesaciersconcernetouslesélémentsdelastructure.
+Cecalculs’effectueparl’appelautomatiqueduoudesmodule(s)deferraillageconcerné(s).
+LemoduledeferraillagereçoitduprogrammeOssaturelesdonnéessuivantes:
+– Dimensionsdeséléments.
+– Chargements (verticaux) issus de la descente de charges traditionnelle : pour les cas de
+chargesG,Q,AC.
+– Présencedeséisme.
+De nombreuses autres hypothèses peuvent être prises en compte par l’intermédiaire des fi-
+chiers « Défaut » utilisés par chacun des modules de ferraillage. Le module de ferraillage
+produit un plan donnant le ferraillage exact de l’ élément et en déduit le ratio d’acier qui est
+retournéàOssature.
+5.1.4.3 Dégression verticale des chargements
+Lorsque l’on applique la Méthode Réglementaire pour le calcul de la descente de charges,
+onalapossibilitéd’appliquerunedégressiondeschargesverticalesconformémentàlanorme
+NFP 06–001 : "Base de calcul des constructions. Charges d’exploitation des bâtiments". La
+priseencomptedesdégressionsverticalessefaitenactivantcetteoptiondans"Hypothèses/Méthodes
+decalcul–ddc/méthoderéglementaire".
+62
+5 Descentedecharges
+Fig. 5.6: Priseencomptedeladégressiondeschargesverticales.
+Lecoefficientderéductiondqfonctionnedelamanièresuivante(casdedescentedecharges
+danslespoteaux):
+Descentedechargesdanslespoteaux: Descentedechargesdanslespoteaux:
+Sansdégressiondessurcharges. Avecdégressiondessurcharges.
+Remarque : Cesfacteursderéductionnes’appliquentpasauxpoutresetauxdalles.
+Défini de manière globale, le facteur de réduction dq peut aussi être saisi sur chaque élé-
+ment par l’utilisateur (dans la fenêtre de statut de chaque élément ou par la commande "Mo-
+difier/Attributs/Statuts").
+5.1.4.4 Travées chargées–déchargées
+Poutres. Le programme peut calculer les poutres continues en chargeant et déchargeant
+alternativement les surcharges d’exploitation de chacune des travées (Hypothèses/Méthode
+decalcul–ddc/Méthoderéglementaire).
+63
+5 Descentedecharges
+Parexemple:
+Les résultats obtenus sont évidemment différents du calcul traditionnel. On obtient pour
+chaqueappuideuxvaleurscorrespondantauxréactionsmaximumsetminimums.
+Parexemple:
+Cedessinn’estpasàl’échelle.
+1. Calculavectouteslestravéeschargéessimultanément.
+64
+5 Descentedecharges
+2 Calculaveclestravéeschargées.
+Dalles. Lesdallescalculéesauxélémentsfinisdanslecadredeplancherscontinuspeuvent
+fonctionnersuivantunelogiquechargée/déchargéepourlessurchargesQ.
+Quandauseind’unplancher,desdallesontdesstatutsdechargementsdifférents(certaines
+«chargées», d’autres «déchargées») le calcul aux éléments finis établi les résultats des cas de
+chargessuivants:
+-lesdallescochées«chargées»:chargéesseulesenQ.
+-lesdallescochées«déchargées»:chargéesseulesenQ.
+-touteslesdalleschargéesenQ.
+Les efforts maximums sur les appuis sont alors retenus. Les soulèvements ne sont pas pris
+encompte:remplacésparuneréactionnulle.
+65
+5 Descentedecharges
+5.2 Calcul aux éléments finis
+5.2.1 Principe de fonctionnement
+LaméthodeÉlémentsfinisseraessentiellementutiliséepourréaliserladescentedecharges
+horizontales. Cependant, l’utilisateur a la possibilité de l’appliquer également pour la des-
+cente de charges verticales; le choix se fait dans la fenêtre "Hypothèses/Méthodes de calcul–
+ddc/Choixdesméthodes".
+Fig. 5.7: Choixdesméthodesdecalcul.
+Le modèle utilisé pour le calcul aux éléments finis est obtenu à partir de celui généré pour
+la descente de charges traditionnelle. Le programme se charge en effet de transformer les
+éléments de la structure en éléments finis. Simplement, l’utilisateur indique élément par élé-
+ment, par groupes d’éléments, ou pour toute la structure, la modélisation qu’il souhaite voir
+adoptée pour le calcul aux éléments finis dans la fenêtre "Hypothèses/Méthodes de calcul–
+ddc/MéthodeEF".
+66
+5 Descentedecharges
+Fig. 5.8: Modélisationauxélémentsfinis.
+Lamodélisationdelastructurepourlecalculauxélémentfinisn’étantpaslamêmeexacte-
+ment que celle de la méthode traditionnelle, la descente de charges aux éléments finis donne
+des résultats différents de la méthode traditionnelle. En effet les éléments de structure n’ont
+pasexactementlemêmecomportementquedanslaméthodetraditionnelle.
+Ladifférencedefonctionnementdumodèlepeutêtrereprésenterdelamanièresuivante:
+67
+5 Descentedecharges
+Méthodetraditionnelle. Méthodeélémentfinis.
+Onconstatequelesréactionssouslesdeuxpoteauxsontdifférentessuivantquelaméthode
+traditionnelle ou éléments finis est employée. La méthode traditionnelle produit des réactions
+au prorata des portées. La méthode aux éléments finis produit des réactions au prorata des
+inerties:cesontlesélémentslesplusraidesquireprennentleplusd’efforts.
+Lefonctionnementdechaqueélémentestplusprécisémentdécritdansleschapitresconcer-
+nantchacund’entreeux:enparticulierlesconnexionsentreéléments.
+Une importante source de différence de résultats entre descente de charges aux éléments
+finisettraditionnelleestlamanièredontlesdallesreportentleschargements:
+– Dans la méthode traditionnelle, les charges sur les dalles sont reportées suivant les sens
+de portée définis. Sauf dans le cas de dalles associées au sein d’un plancher calculé aux
+élémentsfinis.
+– Dans la méthode aux éléments finis, si la modélisation par maillage de coque est retenue
+alorsonnetientpluscomptedessensdeportée.Larépartitiondeseffortssefaitalorsau
+proratadesinerties.
+Connexions entre les éléments. De manière générale, les éléments sont tous encastrés
+les uns sur les autres. Sauf les poteaux qui peuvent être articulés sur leurs fondations (Hypo-
+thèses/Méthodesdecalcul–ddc/MéthodeElémentsfinis):
+68
+5 Descentedecharges
+– Lespoutresetvoilessontencastréssurleursporteursetélémentsadjacents.
+– Lesdallessuivantleurmodélisation:
+– Maillage de coques : elles sont encastrées sur leur appui, ainsi qu’avec tout élément
+entrantencontactavecelles.
+– Membrane : seule la raideur en plan des membranes est prise en compte, elles ne
+fléchissentpas.Cesdallessont,seulementselonlaraideurenplan,encastréessurleurs
+appuis.
+– Nonmodélisées:pasd’encastrement,nidecontinuité.
+– Lespoteauxsontencastrésàleursdeuxextrêmitéssurlesélémentsaveclesquelsilssont
+encontact.
+– Lesvoiles,quelquesoitleurmodélisation,sontencastréssurlesélémentsencontactavec
+eux.
+– Les semelles isolées sont encastrées ou articulées suivant l’option cochée dans "Hypo-
+thèses\Méthodesdecalcul–ddc\Elémentsfinis".
+– Lessemellesfilantessontencastréessurlesélémentsquitombentdessus.
+N.B. : Lorsque deux élément sont en contact, c’est la connexion la moins rigide qui dicte
+le comportement de l’un par rapport à l’autre. Par exemple, quand une dalle en membrane
+reposesurunvoile:levoilenereprendpasdeflexion.
+Comportements mécaniques.
+– Les poutres et poteaux fonctionnent comme des poutres RDM supportant des torseurs
+d’efforts tridimensionnels d’efforts et de moments (N , T , T , M , M , M ) et sont systé-
+x y z x y z
+matiquementcontinus.
+– Les semelles isolées sont transformées en appuis ponctuels infiniment raides : encas-
+trement ou articulation suivant l’option cochée dans la boite de dialogue "Hypothèses /
+Méthodesdecalcul–ddc/Elémentsfinis".Ellesreprennentdestorseurstridimensionnels
+(N ,T ,T ,M ,M ,M ).
+x y z x y z
+– Les semelles filantes sont transformées en une suite d’appuis ponctuels ayant les mêmes
+caractéristiquesquecellesvuesci–dessus.
+– Lesdallesvoientleurfonctionnementvariersuivantletypedemodélisationchoisi:
+– Dalle modélisée par un maillage de coques : les dalles sont continues, portent sur tous
+leurs côtés et la répartition des charges se fait au prorata des raideurs des appuis. Ces
+élémentssupportentdestorseursd’effortstridimensionnels(N ,T ,T ,M ,M ,M ).
+x y z x y z
+– Dallemodéliséeparunemembranenonmaillée:ladallen’apasderaideurvisàvisde
+69
+5 Descentedecharges
+laflexion,etnereprendqueleseffortsplacésdanssonplanentractionoucompression.
+– Dallenonmodélisée:lesdallessontconsidéréescommeisostatiques.Ellesnesontpas
+modélisées mais leurs réactions d’appui, issues des sens de portée, sont recréées sur
+lesporteurs.
+– Les voiles voient leur fonctionnement varier suivant le type de modélisation choisi : de
+manière générale les voiles sont systématiquement continus et supportent des torseurs
+d’effortstridimensionnels(N ,T ,T ,M ,M ,M ).
+x y z x y z
+5.2.2 Chargements pris en compte
+LeschargementsprisencomptedansladescentedechargesauxÉlémentsFinisdépendent
+del’optionchoisiedansleshypothèsesdedépart.
+5.2.2.1 La descente de charges verticale
+Il s ‘agit de la prise en compte des charges permanentes et d’exploitations appliquées par
+l’utilisateur, ainsi que du poids propre de la structure. Pour les deux méthodes de calcul, tra-
+ditionnelleetélémentsfinis,lesrésultatssontdisponiblespourlescasdechargessuivants:
+– Chargespermanentesaveccloison.
+– Chargesd’exploitation.
+– Chargesaprèscloison.
+5.2.2.2 Les efforts climatiques
+Ils sont générés automatiquement par le programme sur les éléments parois posés sur la
+structure suivant les hypothèses neige et vent choisies. Les résultats sont accessibles pour les
+casdechargessuivants:
+– Ventsuivant+Xensurpression.
+– Ventsuivant-Xensurpression.
+– Ventsuivant+Yensurpression+
+– Ventsuivant-Yensurpression.
+70
+5 Descentedecharges
+Fig. 5.9: Définitiondeseffortsclimatiques.
+5.2.2.3 Les efforts sismiques
+Ils sont générés automatiquement par le programme si les hypothèses de séisme ont été
+renseignées.
+Lescasdechargesprisencomptepourlecalculauxélémentsfinissontlessuivants:
+– SéismesuivantladirectionX.
+– SéismesuivantladirectionY.
+– SéismesuivantladirectionZ.
+Fig. 5.10: Définitiondeseffortssismiques.
+71
+5 Descentedecharges
+5.2.3 Caractéristiques des éléments de structure
+5.2.3.1 Poutres
+Lapoutreestmodéliséeenélémentfilaireavecunaxelocalquiestlesuivant:
+L’axe x (épais) est dans le prolongement de la poutre, l’axe y (fin) est toujours orienté
+parallèlementauxZ croissants.L’axez(nonreprésenté)seplacepourformeruntrièdredirect.
+Lescaractéristiquesdel’élémentfilairesontlessuivants:
+72
+5 Descentedecharges
+– Sectionconstanteégaleàlasectionrectangledelapoutre= b·h
+– Inerties:I =b·h3/12,I =b3·h/12etI =b3·h/3.
+z y x
+– Modulesdeflexion:V =V =I /(b/2)=h·b2/6etV =V =I /(h/2)=b·h2/6.
+1y 2y y 1z 2z z
+– Sectionsréduitesd’efforttranchant:
+– Efforttranchantsuivant y:A =5·b·h/6.
+y
+– Efforttranchantsuivant z:A =5·b·h/6.
+z
+– Longueur:longueurdel’axedelapoutremodéliséedansOssature.
+L’élément fini utilisé se comporte comme une poutre RDM standard, à ceci prêt que la dé-
+forméed’efforttranchantestnégligée.Cetélémentsupporteettransmetdestorseursd’efforts
+tridimensionnels(N ,T ,T ,M ,M ,M ).
+x y z x y z
+L’élémentpoutreestencastrésurlesdalles,voiles,etpoteauxencontactaveclui.
+5.2.3.2 Poteaux
+Lepoteauestmodéliséenélémentfilaireavecunaxelocalquiestlesuivant:
+73
+5 Descentedecharges
+L’axe y ( trait fin) du repère local est parallèle à la direction du côté a. L’axex (trait épais)
+estverticalascendant.L’axez(nonreprésenté)s’orientepourformeruntrièdredirect.
+Lescaractéristiquesdel’élémentfilairecorrespondantdépendentdesaformedesection:
+Section rectanglulaire.
+– sectionconstanteégaleàlasectionrectangledelapoutre =b·h.
+– Inerties:I =b3·a/12,I =b·a3/12etI =b3·a/3.
+y z x
+– Modulesdeflexion:V =V =I /(b/2)=a·b2/6etV =V =I /(a/2)=b·a2/6.
+1y 2y y 1z 2z Z
+– Sectionsréduitesd’efforttranchant:
+– Efforttranchantsuivant y:A =5·b·a/6.
+y
+– Efforttranchantsuivant z:A =5·b·a/6.
+z
+Section circulaire.
+74
+5 Descentedecharges
+– Sectionconstanteégaleàlasectionrectangledelapoutre =b·h.
+– Inerties:I =I =π·r4/4.
+y z
+– Modulesdeflexion:V =V =I /r=V =V =I /r=π·r3/4.
+1z 2Z z 1y 2y y
+– Sections réduites d’effort tranchant : Effort tranchant suivant y ou suivant z : A =A =
+y z
+(9/10)·π·r2.
+– Longueur:hauteurdel’étage.
+L’inertiedelasectionpeutêtreorientéeparunerotationautourdel’axedepoteau.
+L’angle qui est indiqué dans les statuts de l’élément, est repris pour orienter identiquement
+lerepèrelocaldesonimageauxélémentsfinis.
+L’élément fini utilisé se comporte comme une poutre RDM standard, à ceci prêt que la dé-
+forméed’efforttranchantestnégligée.Cetélémentsupporteettransmetdestorseursd’efforts
+tridimensionnels(N ,T ,T ,M ,M ,M ).
+x y z x y z
+L’élément poteau est automatiquement encastré sur les éléments avec lesquels il est en
+contact, sauf pour les fondations. En effet, on peut choisir dans la boite de dialogue "Hy-
+pothèses / Méthodes de calcul – ddc / Méthode éléments finis / poteaux" d’encastrer ou de
+rotulerenpiedlespoteauxsurleursfondations.
+75
+5 Descentedecharges
+5.3 Exemple
+Onseproposededimensionnerlastructuresuivante.
+La modélisation de cette structure, sur Arche Ossature, peut se faire selon le schéma sui-
+vant:
+Étape 1. Définir la Grille. On définit une grille cartésienne, en utilisant un pas de 1 m
+danslesdeuxdirections:O~x etO~y.
+76
+5 Descentedecharges
+Étape 2. Gestion de l’étage.
+Étape 3. Saisie des poteaux. La saisie des poteaux peut se faire par grille (en utilisant
+lecurseur).
+77
+5 Descentedecharges
+Étape 4. Saisie des voiles. Excepté le voile 9 dont la saisie est faite par clavier : en
+saisissant les coordonnées de ses extrémités (extrémité 1 : x = 0 et y = 9; extrémité 2 : x =
+−1.8ety=5.4),lasaisiedesvoilesefaitpargrille.
+78
+5 Descentedecharges
+Étape 5. Saisie des poutres. Onpeutmettredespoutreshyperstatiquesetisostatiques.
+Lapoutre12estgénérée,enutilisantlemoded’accrochage"extrémité".Onsaisitlesautres
+poutrespargrille.
+Étape 6. Prolonger. On prolonge le voile 1, en utilisant la fonction "Relimiter" du menu
+"Modifier/CAO".
+79
+5 Descentedecharges
+Étape 7. Copie d’éléments par rotation. En utilisant la fonction "Copier" du menu
+"Modifier/CAO", on copie le poteau 2 (nombre de copies = 5) par rotation, par rapport au
+poteau1.
+80
+5 Descentedecharges
+Étape 8. Saisie des dalles. On fait un contour sur tout le bâtiment (dalle unique) et
+découpeladalleautomatiquement.
+81
+5 Descentedecharges
+Étape 9. Saisie des charges. Lebâtimentsupportedeuxcasdecharges:
+– Chargessurfaciquessurdalle:
+– LachargepermanenteG=0.31t/m2.
+– Lacharged’exploitationQ=0.10t/m2.
+– Chargeslinéiquessurpoutres(Chargesdescloisons):
+– Mursextérieurs:LachargeestG=0.8t/m.
+– Mursintérieurs:LachargeestG=0.1t/m.
+82
+5 Descentedecharges
+Étape 10. Copie d’étages On copie l’étage 1 de l’étage 2 à l’étage 4, en utilisant la
+fonction"Modificationdesétages"dumenu"Modifier/Etages".
+Étape 11. Saisie des semelles. On va sur l’étage 1 et on saisie automatiquement des
+semelles, en utilisant la fonction "Automatiques..." du menu "Générer/Fondation" ou l’icône
+.
+83
+5 Descentedecharges
+Étape 12. Vérification et modélisation. Pour finir l’étape de saisie, deux opérations
+doiventêtreeffectuées:"Analyser/vérifier" et"Analyser/Modéliser".
+Étape 13. Calcul. Danscetteétape,oncalculeladescentedechargesàl’aidedelafonction
+"Analyser/CalculerDDC..."etleferraillageenutilisant"Analyser/CalculerFerraillage".
+Étape 14. Exploitation. Onpeutexploiterlesrésultatssoitgraphiquementsoitsousforme
+de documents écrits (Note de DDC, Métré quantitatif et estimatif, Descente de charge gra-
+phique). Les éléments Poutres, Poteaux, Semelles, Voiles et Dalles peuvent être exportés vers
+les modules de ferraillage appropriés avec reprise automatique des résultats de la descente de
+charge.
+84
