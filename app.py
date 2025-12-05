@@ -3,109 +3,96 @@ import sys
 import os
 import re
 import string
-import nltk
-try:
-    nltk.data.find('corpora/stopwords')
-except LookupError:
-    nltk.download('stopwords', quiet=True)
 
-try:
-    nltk.data.find('corpora/words')
-except LookupError:
-    nltk.download('words', quiet=True)
+# ----------------------------
+# Gestion des dépendances
+# ----------------------------
+def install_package(pkg):
+    import subprocess
+    subprocess.check_call([sys.executable, "-m", "pip", "install", pkg])
 
-
-# Prefer pdfplumber for more accurate extraction, but fall back to PyPDF2 if needed.
+# --- PDF parsers ---
 pdfplumber = None
 pypdf2_available = False
+
 try:
     import pdfplumber
 except ModuleNotFoundError:
-    st.warning("pdfplumber is not installed. Will try a fallback PDF extractor (PyPDF2) if available.")
+    st.warning("pdfplumber non installé. Tentative d'utiliser PyPDF2.")
     try:
         from PyPDF2 import PdfReader
         pypdf2_available = True
     except ModuleNotFoundError:
         st.error(
-            "Neither 'pdfplumber' nor 'PyPDF2' are installed. The app needs at least one PDF parser.\n\n"
-            "Fix: add pdfplumber or PyPDF2 to requirements.txt and redeploy, or run locally:\n\n"
-            "  pip install pdfplumber\n  # or\n  pip install PyPDF2\n"
+            "Aucun parseur PDF installé. Installez 'pdfplumber' ou 'PyPDF2' dans requirements.txt."
         )
-        # Let import proceed to allow Streamlit to show the error message, but further PDF work will fail.
-        pdfplumber = None
 
-# Try to import nltk and ensure required corpora are available.
+# --- nltk ---
 try:
     import nltk
-    # Make sure the corpora we use are available; download quietly if not found.
-    try:
-        nltk.data.find('corpora/stopwords')
-    except LookupError:
-        nltk.download('stopwords', quiet=True)
-    try:
-        nltk.data.find('corpora/words')
-    except LookupError:
-        nltk.download('words', quiet=True)
-
-    from nltk.corpus import stopwords, words
 except ModuleNotFoundError:
-    st.error(
-        "Missing Python package 'nltk'.\n\n"
-        "Fix: install the app dependencies and restart the app:\n\n"
-        "  pip install -r requirements.txt\n\n"
-        "If you're deploying on Streamlit Cloud, add requirements.txt to the repo root and redeploy."
-    )
-    raise
+    st.info("Installation automatique de nltk...")
+    install_package("nltk")
+    import nltk
 
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+# Télécharger les corpus nécessaires
+for corpus in ["stopwords", "words"]:
+    try:
+        nltk.data.find(f"corpora/{corpus}")
+    except LookupError:
+        st.info(f"Téléchargement du corpus nltk '{corpus}'...")
+        nltk.download(corpus, quiet=True)
 
-# ------------------------------------------------------------
+from nltk.corpus import stopwords, words
+
+# --- scikit-learn ---
+try:
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
+except ModuleNotFoundError:
+    st.info("Installation automatique de scikit-learn...")
+    install_package("scikit-learn")
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
+
+# ----------------------------
 # Détection et correction du texte inversé
-# ------------------------------------------------------------
+# ----------------------------
 def is_reversed(text):
-    words = text.split()
-    reversed_count = sum(1 for w in words if w[::-1].lower() in text.lower())
-    return reversed_count > len(words) * 0.5
+    words_list = text.split()
+    reversed_count = sum(1 for w in words_list if w[::-1].lower() in text.lower())
+    return reversed_count > len(words_list) * 0.5
 
 def fix_reversed_text(text):
     return text[::-1]
 
-
-# ------------------------------------------------------------
-# Extraction PDF → TXT (uses pdfplumber if present, else PyPDF2 fallback)
-# ------------------------------------------------------------
+# ----------------------------
+# Extraction PDF → TXT
+# ----------------------------
 def extract_pdf_to_txt(pdf_path, txt_path):
-
     if os.path.exists(txt_path):
         return
 
     full_text = ""
 
     if pdfplumber is not None:
-        # preferred extraction
         with pdfplumber.open(pdf_path) as pdf:
             for page in pdf.pages:
                 text = page.extract_text()
                 if not text:
                     continue
-
                 text = text.encode("utf-8", "ignore").decode("utf-8", "ignore")
                 lines = []
-
                 for line in text.split("\n"):
                     line = line.strip()
                     if len(line) < 3:
                         continue
-
                     if is_reversed(line):
                         line = fix_reversed_text(line)
-
                     lines.append(line)
-
                 full_text += "\n".join(lines) + "\n"
+
     elif pypdf2_available:
-        # fallback extraction using PyPDF2
         from PyPDF2 import PdfReader
         reader = PdfReader(pdf_path)
         for page in reader.pages:
@@ -115,37 +102,31 @@ def extract_pdf_to_txt(pdf_path, txt_path):
                 text = None
             if not text:
                 continue
-
             text = text.encode("utf-8", "ignore").decode("utf-8", "ignore")
             lines = []
-
             for line in text.split("\n"):
                 line = line.strip()
                 if len(line) < 3:
                     continue
-
                 if is_reversed(line):
                     line = fix_reversed_text(line)
-
                 lines.append(line)
-
             full_text += "\n".join(lines) + "\n"
+
     else:
-        st.error("No PDF parser available. Install 'pdfplumber' or 'PyPDF2'.")
+        st.error("Aucun parseur PDF disponible.")
         raise RuntimeError("No PDF parser available")
 
     with open(txt_path, "w", encoding="utf-8", errors="ignore") as f:
         f.write(full_text)
 
-    print("Extraction PDF → formation_arche.txt créée.")
+    print("Extraction PDF → TXT créée.")
 
-
-# ------------------------------------------------------------
-# Prétraitement (sans punkt)
-# ------------------------------------------------------------
+# ----------------------------
+# Prétraitement du texte
+# ----------------------------
 def split_sentences(text):
     return [s.strip() for s in re.split(r'(?<=[\.\?\!])\s+', text) if len(s.strip()) > 3]
-
 
 french_dict = set([
     "la","le","les","des","du","de","et","entre","dans","utilisation","langue","logiciel",
@@ -153,25 +134,22 @@ french_dict = set([
     "poutre","poteau","dalle","arche","ossature","structure","béton","armé","dimensionnement",
     "charge","charges","modèle","modélisation"
 ])
+
 def fix_word_spacing(text):
-    # Si le mot est trop long, on tente de le découper
     tokens = text.split()
     fixed_tokens = []
 
     for token in tokens:
-        if len(token) > 15:  # mot trop long → probablement collé
+        if len(token) > 15:
             result = []
             current = ""
-
             for char in token:
                 current += char
-                # si le mot courant existe dans dictionnaire → on coupe
                 if current.lower() in french_dict:
                     result.append(current)
                     current = ""
             if current:
                 result.append(current)
-
             fixed_tokens.extend(result)
         else:
             fixed_tokens.append(token)
@@ -181,8 +159,6 @@ def fix_word_spacing(text):
 def preprocess(text):
     text = text.lower()
     text = re.sub(r"\s+", " ", text)
-
-    # Correction de mots collés AVANT segmentation
     text = fix_word_spacing(text)
 
     raw = split_sentences(text)
@@ -191,19 +167,16 @@ def preprocess(text):
     cleaned = []
 
     for sent in raw:
-        # Correction de mots collés dans chaque phrase
         sent = fix_word_spacing(sent)
-
         tokens = re.findall(r'\w+', sent)
         tokens = [w for w in tokens if w not in stop_words]
         cleaned.append(" ".join(tokens))
 
     return raw, cleaned
 
-
-# ------------------------------------------------------------
+# ----------------------------
 # Similarité TF-IDF
-# ------------------------------------------------------------
+# ----------------------------
 def best_sentence_index(query, cleaned):
     vect = TfidfVectorizer()
     tfidf = vect.fit_transform(cleaned + [query])
@@ -214,75 +187,31 @@ def chatbot(query, raw, cleaned):
     idx = best_sentence_index(query, cleaned)
     return raw[idx]
 
-
-# ------------------------------------------------------------
-# APPLICATION STREAMLIT
-# ------------------------------------------------------------
+# ----------------------------
+# Application Streamlit
+# ----------------------------
 def main():
-
     st.title("🤖 Chatbot – Formation ARCHE (Structures)")
 
-    # -------- PAGE D’ACCUEIL / INSTRUCTIONS --------
-    with st.expander("ℹ️ **Instructions et Utilité du Chatbot**", expanded=True):
+    with st.expander("ℹ️ Instructions et Utilité du Chatbot", expanded=True):
         st.markdown("""
-### 🎯 **Objectif du chatbot**
-Ce chatbot a été créé pour vous aider à comprendre et utiliser efficacement **le logiciel Arche Ossature** et son environnement pédagogique basé sur le document :
+### 🎯 Objectif
+Aider à comprendre et utiliser **le logiciel Arche Ossature** à partir du PDF Formation_Arche.pdf.
 
-📘 *Formation_Arche.pdf* – Support de formation bâtiment et béton armé.
+### 🧠 Fonctionnalités
+- Recherche de phrases pertinentes
+- Explications sur modélisation, éléments béton armé, ferraillage
+- Dimensionnement et règles BAEL / Eurocode
 
----
+### ❓ Exemples
+- "Qu'est-ce qu'un portique ?"
+- "Comment modéliser un plancher dans Arche ?"
+- "C’est quoi une poutre continue ?"
 
-### 🧠 **Ce que fait le chatbot**
-Il :
-- recherche dans le PDF la phrase la plus pertinente
-- vous fournit la définition, l'explication ou la procédure associée
-- peut aider à comprendre des notions de :
-  - modélisation sous ARCHE
-  - éléments béton armé
-  - dimensionnement et règles BAEL / Eurocode
-  - principes des descentes de charges
-  - notions de ferraillage
-  - méthodologie de calcul structurel
-
----
-
-### ❓ **Exemples de questions que vous pouvez poser**
-- *"Qu'est-ce qu'un portique ?"*
-- *"Comment modéliser un plancher dans Arche ?"*
-- *"C’est quoi une poutre continue ?"*
-- *"Comment fonctionne le ferraillage automatique ?"*
-- *"Définition d'une charge linéique ?"*
-- *"Comment exporter vers Arche Poutre ?"*
-
----
-
-### 🛑 **Ce que le chatbot NE fait pas**
-⚠️ Il ne :
-- crée pas des plans
-- ne fait pas de calcul automatique en temps réel
-- ne remplace pas une vraie simulation ARCHE
-- ne répond pas en dehors du contenu du PDF
-
-Il se base **uniquement sur le texte de Formation_Arche.pdf**.
-
----
-
-### 📝 **Comment formuler vos questions**
-Pour de meilleurs résultats :
-- écrivez des phrases courtes
-- utilisez des termes techniques du bâtiment
-- posez une question en lien avec le document
-
-Exemples :
-- *"Définition d'un poteau BA ?"*
-- *"Rôle de la dalle dans un plancher ?"*
-
----
-
-Bonne utilisation ! 😊
+⚠️ Le chatbot ne remplace pas le logiciel ni les calculs réels.
 """)
 
-    # -------- TRAITEMENT PDF --------
+    # Chemins PDF/TXT
     pdf_path = "Formation_Arche.pdf"
     txt_path = "formation_arche.txt"
 
@@ -293,14 +222,12 @@ Bonne utilisation ! 😊
 
     raw, cleaned = preprocess(text)
 
-    # -------- QUESTION UTILISATEUR --------
     question = st.text_input("Posez votre question sur ARCHE :")
 
     if question:
         answer = chatbot(question, raw, cleaned)
         st.markdown("### 📘 Réponse")
         st.write(answer)
-
 
 if __name__ == "__main__":
     main()
