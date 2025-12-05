@@ -1,25 +1,27 @@
-# (Top of file)
-
 import streamlit as st
 import sys
 import os
 import re
 import string
 
-# Guarded import for pdfplumber so we can show a clear message in the UI.
+# Prefer pdfplumber for more accurate extraction, but fall back to PyPDF2 if needed.
+pdfplumber = None
+pypdf2_available = False
 try:
     import pdfplumber
 except ModuleNotFoundError:
-    st.error(
-        "Missing Python package 'pdfplumber'.\n\n"
-        "Fix: install the app dependencies and restart the app:\n\n"
-        "  pip install pdfplumber\n\n"
-        "Or add 'pdfplumber' to requirements.txt and redeploy (Streamlit Cloud)."
-    )
-    raise
-
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+    st.warning("pdfplumber is not installed. Will try a fallback PDF extractor (PyPDF2) if available.")
+    try:
+        from PyPDF2 import PdfReader
+        pypdf2_available = True
+    except ModuleNotFoundError:
+        st.error(
+            "Neither 'pdfplumber' nor 'PyPDF2' are installed. The app needs at least one PDF parser.\n\n"
+            "Fix: add pdfplumber or PyPDF2 to requirements.txt and redeploy, or run locally:\n\n"
+            "  pip install pdfplumber\n  # or\n  pip install PyPDF2\n"
+        )
+        # Let import proceed to allow Streamlit to show the error message, but further PDF work will fail.
+        pdfplumber = None
 
 # Try to import nltk and ensure required corpora are available.
 try:
@@ -44,6 +46,8 @@ except ModuleNotFoundError:
     )
     raise
 
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 # ------------------------------------------------------------
 # Détection et correction du texte inversé
@@ -58,7 +62,7 @@ def fix_reversed_text(text):
 
 
 # ------------------------------------------------------------
-# Extraction PDF → TXT
+# Extraction PDF → TXT (uses pdfplumber if present, else PyPDF2 fallback)
 # ------------------------------------------------------------
 def extract_pdf_to_txt(pdf_path, txt_path):
 
@@ -67,9 +71,37 @@ def extract_pdf_to_txt(pdf_path, txt_path):
 
     full_text = ""
 
-    with pdfplumber.open(pdf_path) as pdf:
-        for page in pdf.pages:
-            text = page.extract_text()
+    if pdfplumber is not None:
+        # preferred extraction
+        with pdfplumber.open(pdf_path) as pdf:
+            for page in pdf.pages:
+                text = page.extract_text()
+                if not text:
+                    continue
+
+                text = text.encode("utf-8", "ignore").decode("utf-8", "ignore")
+                lines = []
+
+                for line in text.split("\n"):
+                    line = line.strip()
+                    if len(line) < 3:
+                        continue
+
+                    if is_reversed(line):
+                        line = fix_reversed_text(line)
+
+                    lines.append(line)
+
+                full_text += "\n".join(lines) + "\n"
+    elif pypdf2_available:
+        # fallback extraction using PyPDF2
+        from PyPDF2 import PdfReader
+        reader = PdfReader(pdf_path)
+        for page in reader.pages:
+            try:
+                text = page.extract_text()
+            except Exception:
+                text = None
             if not text:
                 continue
 
@@ -87,6 +119,9 @@ def extract_pdf_to_txt(pdf_path, txt_path):
                 lines.append(line)
 
             full_text += "\n".join(lines) + "\n"
+    else:
+        st.error("No PDF parser available. Install 'pdfplumber' or 'PyPDF2'.")
+        raise RuntimeError("No PDF parser available")
 
     with open(txt_path, "w", encoding="utf-8", errors="ignore") as f:
         f.write(full_text)
