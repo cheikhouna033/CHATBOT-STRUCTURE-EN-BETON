@@ -178,6 +178,65 @@ def chatbot(question, sentences, corpus):
 # ==========================================================
 def main():
     st.title("🤖 Chatbot – Formation ARCHE (Structures Béton Armé)")
+    # -------- PAGE D’ACCUEIL / INSTRUCTIONS --------
+    with st.expander("ℹ️ **Instructions et Utilité du Chatbot**", expanded=True):
+        st.markdown("""
+    ### 🎯 **Objectif du chatbot**
+    Ce chatbot a été créé pour vous aider à comprendre et utiliser efficacement **le logiciel Arche Ossature** et son environnement pédagogique basé sur le document :
+
+    📘 *Formation_Arche.pdf* – Support de formation bâtiment et béton armé.
+
+    ---
+
+    ### 🧠 **Ce que fait le chatbot**
+    Il :
+    - recherche dans le PDF la phrase la plus pertinente
+    - vous fournit la définition, l'explication ou la procédure associée
+    - peut aider à comprendre des notions de :
+      - modélisation sous ARCHE
+      - éléments béton armé
+      - dimensionnement et règles BAEL / Eurocode
+      - principes des descentes de charges
+      - notions de ferraillage
+      - méthodologie de calcul structurel
+
+    ---
+
+    ### ❓ **Exemples de questions que vous pouvez poser**
+    - *"Qu'est-ce qu'un portique ?"*
+    - *"Comment modéliser un plancher dans Arche ?"*
+    - *"C’est quoi une poutre continue ?"*
+    - *"Comment fonctionne le ferraillage automatique ?"*
+    - *"Définition d'une charge linéique ?"*
+    - *"Comment exporter vers Arche Poutre ?"*
+
+    ---
+
+    ### 🛑 **Ce que le chatbot NE fait pas**
+    ⚠️ Il ne :
+    - crée pas des plans
+    - ne fait pas de calcul automatique en temps réel
+    - ne remplace pas une vraie simulation ARCHE
+    - ne répond pas en dehors du contenu du PDF
+
+    Il se base **uniquement sur le texte de Formation_Arche.pdf**.
+
+    ---
+
+    ### 📝 **Comment formuler vos questions**
+    Pour de meilleurs résultats :
+    - écrivez des phrases courtes
+    - utilisez des termes techniques du bâtiment
+    - posez une question en lien avec le document
+
+    Exemples :
+    - *"Définition d'un poteau BA ?"*
+    - *"Rôle de la dalle dans un plancher ?"*
+
+    ---
+
+    Bonne utilisation ! 😊
+    """)
 
     pdf_path = "Formation_Arche.pdf"
     txt_path = "formation_arche.txt"
