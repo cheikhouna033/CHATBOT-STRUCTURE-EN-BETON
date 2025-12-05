@@ -4,8 +4,15 @@ import os
 import re
 import string
 import nltk
-nltk.download('stopwords')
-nltk.download('words')
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords', quiet=True)
+
+try:
+    nltk.data.find('corpora/words')
+except LookupError:
+    nltk.download('words', quiet=True)
 
 
 # Prefer pdfplumber for more accurate extraction, but fall back to PyPDF2 if needed.
