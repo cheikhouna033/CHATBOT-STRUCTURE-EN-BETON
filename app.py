@@ -3,6 +3,10 @@ import sys
 import os
 import re
 import string
+import nltk
+nltk.download('stopwords')
+nltk.download('words')
+
 
 # Prefer pdfplumber for more accurate extraction, but fall back to PyPDF2 if needed.
 pdfplumber = None
