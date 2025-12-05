@@ -1,5 +1,5 @@
-streamlit
-nltk
-pdfplumber
-PyPDF2
-scikit-learn
+streamlit==1.35.0
+nltk==3.9
+pdfplumber==0.10.3
+PyPDF2==3.0.1
+regex
