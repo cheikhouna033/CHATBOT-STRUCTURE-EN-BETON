@@ -3,55 +3,6 @@ import os
 import re
 
 # ----------------------------
-# Vérification des dépendances
-# ----------------------------
-
-# PDF parsers
-pdfplumber = None
-pypdf2_available = False
-
-try:
-    import pdfplumber
-except ModuleNotFoundError:
-    st.warning("pdfplumber non installé. Tentative d'utiliser PyPDF2.")
-    try:
-        from PyPDF2 import PdfReader
-        pypdf2_available = True
-    except ModuleNotFoundError:
-        st.error(
-            "Aucun parseur PDF installé. Installez 'pdfplumber' ou 'PyPDF2' dans requirements.txt."
-        )
-        raise
-
-# NLTK
-try:
-    import nltk
-except ModuleNotFoundError:
-    st.error(
-        "Le package 'nltk' n'est pas installé. Ajoutez-le dans requirements.txt et redeployez."
-    )
-    raise
-
-# Télécharger les corpus nécessaires si absent
-for corpus in ["stopwords", "words"]:
-    try:
-        nltk.data.find(f"corpora/{corpus}")
-    except LookupError:
-        nltk.download(corpus, quiet=True)
-
-from nltk.corpus import stopwords
-
-# scikit-learn
-try:
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn.metrics.pairwise import cosine_similarity
-except ModuleNotFoundError:
-    st.error(
-        "Le package 'scikit-learn' n'est pas installé. Ajoutez-le dans requirements.txt et redeployez."
-    )
-    raise
-
-# ----------------------------
 # Détection et correction du texte inversé
 # ----------------------------
 def is_reversed(text):
@@ -70,6 +21,22 @@ def extract_pdf_to_txt(pdf_path, txt_path):
         return
 
     full_text = ""
+    pdfplumber = None
+    pypdf2_available = False
+
+    # Importer les parseurs PDF uniquement ici
+    try:
+        import pdfplumber
+    except ModuleNotFoundError:
+        st.warning("pdfplumber non installé. Tentative d'utiliser PyPDF2.")
+        try:
+            from PyPDF2 import PdfReader
+            pypdf2_available = True
+        except ModuleNotFoundError:
+            st.error(
+                "Aucun parseur PDF installé. Installez 'pdfplumber' ou 'PyPDF2' dans requirements.txt."
+            )
+            return  # On sort sans planter l'app
 
     if pdfplumber is not None:
         with pdfplumber.open(pdf_path) as pdf:
@@ -110,14 +77,14 @@ def extract_pdf_to_txt(pdf_path, txt_path):
             full_text += "\n".join(lines) + "\n"
 
     else:
-        st.error("Aucun parseur PDF disponible.")
-        raise RuntimeError("No PDF parser available")
+        # Aucun parseur disponible → on quitte la fonction
+        st.error("Aucun parseur PDF disponible. Impossible d’extraire le texte.")
+        return
 
     with open(txt_path, "w", encoding="utf-8", errors="ignore") as f:
         f.write(full_text)
 
     print("Extraction PDF → TXT créée.")
-
 # ----------------------------
 # Prétraitement du texte
 # ----------------------------
