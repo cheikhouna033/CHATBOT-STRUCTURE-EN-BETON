@@ -14,6 +14,7 @@ for page in reader.pages:
 
 pdf_file.close()
 
+
 # Sauvegarder dans un fichier texte
 with open("structure.txt", "w", encoding="utf-8") as f:
     f.write(full_text)
