@@ -1,14 +1,34 @@
 import streamlit as st
-import nltk
-import string
-import re
-import pdfplumber
+import sys
 import os
-from nltk.corpus import stopwords
+import re
+import string
+import pdfplumber
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-nltk.download("stopwords")
+# Try to import nltk and ensure required corpora are available.
+try:
+    import nltk
+    # Make sure the corpora we use are available; download quietly if not found.
+    try:
+        nltk.data.find('corpora/stopwords')
+    except LookupError:
+        nltk.download('stopwords', quiet=True)
+    try:
+        nltk.data.find('corpora/words')
+    except LookupError:
+        nltk.download('words', quiet=True)
+
+    from nltk.corpus import stopwords, words
+except ModuleNotFoundError:
+    st.error(
+        "Missing Python package 'nltk'.\n\n"
+        "Fix: install the app dependencies and restart the app:\n\n"
+        "  pip install -r requirements.txt\n\n"
+        "If you're deploying on Streamlit Cloud, add requirements.txt to the repo root and redeploy."
+    )
+    raise
 
 
 # ------------------------------------------------------------
@@ -66,8 +86,6 @@ def extract_pdf_to_txt(pdf_path, txt_path):
 def split_sentences(text):
     return [s.strip() for s in re.split(r'(?<=[\.\?\!])\s+', text) if len(s.strip()) > 3]
 
-from nltk.corpus import words
-nltk.download("words")
 
 french_dict = set([
     "la","le","les","des","du","de","et","entre","dans","utilisation","langue","logiciel",
