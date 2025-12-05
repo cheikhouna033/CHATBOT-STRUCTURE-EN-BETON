@@ -32,7 +32,7 @@ except ModuleNotFoundError:
     )
     raise
 
-# Télécharger les corpus nécessaires
+# Télécharger les corpus nécessaires si absent
 for corpus in ["stopwords", "words"]:
     try:
         nltk.data.find(f"corpora/{corpus}")
