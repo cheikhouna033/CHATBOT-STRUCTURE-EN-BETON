@@ -24,7 +24,7 @@ def extract_pdf_to_txt(pdf_path, txt_path):
     pdfplumber = None
     pypdf2_available = False
 
-    # Importer les parseurs PDF uniquement ici
+    # Import PDF parsers uniquement ici
     try:
         import pdfplumber
     except ModuleNotFoundError:
@@ -77,7 +77,6 @@ def extract_pdf_to_txt(pdf_path, txt_path):
             full_text += "\n".join(lines) + "\n"
 
     else:
-        # Aucun parseur disponible → on quitte la fonction
         st.error("Aucun parseur PDF disponible. Impossible d’extraire le texte.")
         return
 
@@ -85,6 +84,36 @@ def extract_pdf_to_txt(pdf_path, txt_path):
         f.write(full_text)
 
     print("Extraction PDF → TXT créée.")
+
+# ----------------------------
+# NLTK et prétraitement
+# ----------------------------
+try:
+    import nltk
+    for corpus in ["stopwords", "words"]:
+        try:
+            nltk.data.find(f"corpora/{corpus}")
+        except LookupError:
+            nltk.download(corpus, quiet=True)
+    from nltk.corpus import stopwords
+except ModuleNotFoundError:
+    st.error(
+        "Le package 'nltk' n'est pas installé. Ajoutez-le dans requirements.txt et redeployez."
+    )
+    raise
+
+# ----------------------------
+# scikit-learn
+# ----------------------------
+try:
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
+except ModuleNotFoundError:
+    st.error(
+        "Le package 'scikit-learn' n'est pas installé. Ajoutez-le dans requirements.txt et redeployez."
+    )
+    raise
+
 # ----------------------------
 # Prétraitement du texte
 # ----------------------------
@@ -125,7 +154,6 @@ def preprocess(text):
     text = fix_word_spacing(text)
 
     raw = split_sentences(text)
-
     stop_words = set(stopwords.words("french"))
     cleaned = []
 
@@ -179,17 +207,24 @@ Aider à comprendre et utiliser **le logiciel Arche Ossature** à partir du PDF 
 
     extract_pdf_to_txt(pdf_path, txt_path)
 
-    with open(txt_path, "r", encoding="utf-8", errors="ignore") as f:
-        text = f.read()
-
-    raw, cleaned = preprocess(text)
+    # Vérification si le fichier TXT existe avant lecture
+    if os.path.exists(txt_path):
+        with open(txt_path, "r", encoding="utf-8", errors="ignore") as f:
+            text = f.read()
+        raw, cleaned = preprocess(text)
+    else:
+        st.warning("Le fichier texte n'a pas été créé car aucun parseur PDF n'est disponible.")
+        raw, cleaned = [], []
 
     question = st.text_input("Posez votre question sur ARCHE :")
 
     if question:
-        answer = chatbot(question, raw, cleaned)
-        st.markdown("### 📘 Réponse")
-        st.write(answer)
+        if not raw:
+            st.error("Aucune donnée texte disponible pour répondre. Vérifiez le PDF ou les packages PDF.")
+        else:
+            answer = chatbot(question, raw, cleaned)
+            st.markdown("### 📘 Réponse")
+            st.write(answer)
 
 if __name__ == "__main__":
     main()
