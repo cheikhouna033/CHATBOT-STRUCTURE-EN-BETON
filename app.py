@@ -1,17 +1,12 @@
 import streamlit as st
-import sys
 import os
 import re
-import string
 
 # ----------------------------
-# Gestion des dépendances
+# Vérification des dépendances
 # ----------------------------
-def install_package(pkg):
-    import subprocess
-    subprocess.check_call([sys.executable, "-m", "pip", "install", pkg])
 
-# --- PDF parsers ---
+# PDF parsers
 pdfplumber = None
 pypdf2_available = False
 
@@ -26,34 +21,35 @@ except ModuleNotFoundError:
         st.error(
             "Aucun parseur PDF installé. Installez 'pdfplumber' ou 'PyPDF2' dans requirements.txt."
         )
+        raise
 
-# --- nltk ---
+# NLTK
 try:
     import nltk
 except ModuleNotFoundError:
-    st.info("Installation automatique de nltk...")
-    install_package("nltk")
-    import nltk
+    st.error(
+        "Le package 'nltk' n'est pas installé. Ajoutez-le dans requirements.txt et redeployez."
+    )
+    raise
 
 # Télécharger les corpus nécessaires
 for corpus in ["stopwords", "words"]:
     try:
         nltk.data.find(f"corpora/{corpus}")
     except LookupError:
-        st.info(f"Téléchargement du corpus nltk '{corpus}'...")
         nltk.download(corpus, quiet=True)
 
-from nltk.corpus import stopwords, words
+from nltk.corpus import stopwords
 
-# --- scikit-learn ---
+# scikit-learn
 try:
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.metrics.pairwise import cosine_similarity
 except ModuleNotFoundError:
-    st.info("Installation automatique de scikit-learn...")
-    install_package("scikit-learn")
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn.metrics.pairwise import cosine_similarity
+    st.error(
+        "Le package 'scikit-learn' n'est pas installé. Ajoutez-le dans requirements.txt et redeployez."
+    )
+    raise
 
 # ----------------------------
 # Détection et correction du texte inversé
@@ -211,7 +207,6 @@ Aider à comprendre et utiliser **le logiciel Arche Ossature** à partir du PDF 
 ⚠️ Le chatbot ne remplace pas le logiciel ni les calculs réels.
 """)
 
-    # Chemins PDF/TXT
     pdf_path = "Formation_Arche.pdf"
     txt_path = "formation_arche.txt"
 
